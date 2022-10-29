@@ -1,16 +1,6 @@
 <template>
   <div class="backgroud">
-    <div class="container">
-      <div class="header">
-        <div class="header__left">
-          <span>My city</span>
-        </div>
-        <div class="header__right">
-          <span class="header__right__item">Date</span>
-          <span class="header__right__item">Time</span>
-        </div>
-      </div>
-    </div>
+    <AppHeader></AppHeader>
     <div class="content">
       <div class="container"></div>
     </div>
@@ -18,12 +8,19 @@
 </template>
 
 <script>
+import AppHeader from "./components/AppHeader.vue";
 export default {
+  components: {
+    AppHeader,
+  },
   data() {
     return {
-      test: "",
+      time: "",
+      date: "",
+      city: "",
     };
   },
+  
 };
 </script>
 
