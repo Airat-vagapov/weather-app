@@ -1,13 +1,11 @@
 <template>
-  <div class="container">
-    <div class="header">
-      <div class="header__left">
-        <span>My city</span>
-      </div>
-      <div class="header__right">
-        <span class="header__right__item">{{ currentDate }}</span>
-        <span class="header__right__item">Time</span>
-      </div>
+  <div class="header">
+    <div class="header__left">
+      <span>My city</span>
+    </div>
+    <div class="header__right">
+      <span class="header__right__item">{{ currentDate }}</span>
+      <span class="header__right__item">Time</span>
     </div>
   </div>
 </template>
@@ -36,5 +34,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-@import "../sass/theHeader.sass";
+@import "@/sass/theHeader.sass";
 </style>

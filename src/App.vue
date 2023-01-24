@@ -1,13 +1,13 @@
 <template>
-  <div class="backgroud">
+  <div class="main_container">
     <TheHeader></TheHeader>
-    <div class="content">
-      <div class="container"></div>
-    </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
+import TheHeader from "@/components/layouts/TheHeader.vue";
+
 export default {
   components: {
     TheHeader,
