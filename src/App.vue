@@ -1,16 +1,18 @@
 <template>
   <div class="main_container">
     <TheHeader></TheHeader>
+    <WeatherView></WeatherView>
+    <TheFooter></TheFooter>
   </div>
   <!-- </div> -->
 </template>
 
 <script>
-import TheHeader from "@/components/layouts/TheHeader.vue";
+import WeatherView from "@/modules/WeatherView.vue";
 
 export default {
   components: {
-    TheHeader,
+    WeatherView,
   },
   data() {
     return {
