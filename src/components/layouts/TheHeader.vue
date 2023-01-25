@@ -1,13 +1,15 @@
 <template>
-  <div class="header">
-    <div class="header__left">
-      <span>My city</span>
+  <GlassCard>
+    <div class="header">
+      <div class="header__left">
+        <span>My city</span>
+      </div>
+      <div class="header__right">
+        <span class="header__right__item">{{ currentDate }}</span>
+        <span class="header__right__item">Time</span>
+      </div>
     </div>
-    <div class="header__right">
-      <span class="header__right__item">{{ currentDate }}</span>
-      <span class="header__right__item">Time</span>
-    </div>
-  </div>
+  </GlassCard>
 </template>
 
 <script>
