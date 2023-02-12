@@ -1,18 +1,20 @@
 <template>
   <GlassCard :type='widthOfGlass'>
     <div class="content">
+      <span class="temp__gradus">{{currentWeather.temp_c + ' ' + "C°"}}</span>
+      <i class="wi wi-day-sunny"></i>
       <span>Ясно</span>
       <span>Облачность</span>
-      <span>{{currentWeather.temp_c}}</span>
     </div>
   </GlassCard>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
-            widthOfGlass: 'half',
+            widthOfGlass: 'quater',
             currentWeather: {}
         }
     },

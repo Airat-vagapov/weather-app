@@ -22,5 +22,7 @@ export default {
 
 .half
   width: 50%
+.quater
+  width: 25%
 </style>
 
