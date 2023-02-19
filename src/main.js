@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 
 import App from '@/App.vue'
 
-import TheHeader from '@/components/layouts/TheHeader.vue'
-import TheFooter from "@/components/layouts/TheFooter.vue"
+import TheHeader from '@/layouts/TheHeader.vue'
+import TheFooter from "@/layouts/TheFooter.vue"
 import GlassCard from '@//UI/GlassCard.vue'
 import BaseContainer from '@//UI/BaseContainer.vue'
 
