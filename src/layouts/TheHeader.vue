@@ -2,7 +2,7 @@
   <GlassCard>
     <div class="header">
       <div class="header__left">
-        <span>My city</span>
+        <span>{{ city }}, {{ country }}</span>
       </div>
       <div class="header__right">
         <span class="header__right__item">{{ currentDate }}</span>
@@ -19,9 +19,16 @@ export default {
     return {
       currentDate: "",
       currentTime: "",
+      city: "",
+      country: "",
     };
   },
   methods: {
+    getIp() {
+      this.axios.get("/api/v1/getIp.php").then((response) => {
+        console.log(response.data);
+      });
+    },
     getTime() {
       const clientTime = new Date();
 
@@ -53,9 +60,17 @@ export default {
       this.currentDate = date;
       this.currentTime = time;
     },
+    getCity() {
+      this.axios.get("/api/v1/getCity.php").then((response) => {
+        console.log(response.data);
+        this.city = response.data.city;
+        this.country = response.data.country_name;
+      });
+    },
   },
   mounted() {
     this.timeUpdate = setInterval(this.getTime, 1000);
+    this.getCity();
   },
   beforeUnmount() {
     clearInterval(this.timeUpdate);
@@ -64,6 +79,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/sass/theHeader.sass";
 </style>

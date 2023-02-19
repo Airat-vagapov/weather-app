@@ -2,13 +2,13 @@
   <GlassCard :type="widthOfGlass">
     <div class="content">
       <div class="temp">
+        <i class="wi wi-day-sunny"></i>
         <span class="temp__gradus">{{
           currentWeather.temp_c + " " + "C°"
         }}</span>
-        <i class="wi wi-day-sunny"></i>
       </div>
       <span>{{ conditionDay }}</span>
-      <span>Облачность</span>
+      <span>{{ conditionNight }}</span>
     </div>
   </GlassCard>
 </template>
