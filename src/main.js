@@ -4,6 +4,7 @@ import App from '@/App.vue'
 
 import TheHeader from '@/layouts/TheHeader.vue'
 import TheFooter from "@/layouts/TheFooter.vue"
+import LoadingPage from "@/layouts/LoadingPage.vue"
 import GlassCard from '@//UI/GlassCard.vue'
 import BaseContainer from '@//UI/BaseContainer.vue'
 
@@ -15,6 +16,7 @@ const app = createApp(App)
 app.component('BaseContainer', BaseContainer);
 app.component('TheHeader', TheHeader);
 app.component('TheFooter', TheFooter);
+app.component('LoadingPage', LoadingPage);
 app.component('GlassCard', GlassCard);
 
 

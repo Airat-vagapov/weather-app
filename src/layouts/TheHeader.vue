@@ -15,12 +15,11 @@
 <script>
 export default {
   name: "TheHeader",
+  props: ['city', 'country'],
   data() {
     return {
       currentDate: "",
       currentTime: "",
-      city: "",
-      country: "",
     };
   },
   methods: {
@@ -60,17 +59,10 @@ export default {
       this.currentDate = date;
       this.currentTime = time;
     },
-    getCity() {
-      this.axios.get("/api/v1/getCity.php").then((response) => {
-        console.log(response.data);
-        this.city = response.data.city;
-        this.country = response.data.country_name;
-      });
-    },
+    
   },
   mounted() {
     this.timeUpdate = setInterval(this.getTime, 1000);
-    this.getCity();
   },
   beforeUnmount() {
     clearInterval(this.timeUpdate);
