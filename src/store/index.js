@@ -10,8 +10,11 @@ import getters from './getters.js'
 const store = createStore({
     state() {
         return {
+            dataisLoaded: false,
             city: '',
-            country: ''
+            country: '',
+            weatherData: {},
+            condition: {}
         }
     },
     actions,
