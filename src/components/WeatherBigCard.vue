@@ -4,7 +4,7 @@
       <div class="temp">
         <i class="wi wi-day-sunny"></i>
         <span class="temp__gradus">
-          {{ weatherData.temp_c + " " + "C°" }}
+          {{  + " " + "C°" }}
         </span>
       </div>
       <span>{{ conditionDay }}</span>
@@ -15,7 +15,6 @@
 
 <script>
 export default {
-  props: ["dataisLoaded", "weatherData", "conditionDay", "conditionNight"],
   data() {
     return {
       widthOfGlass: "quater",

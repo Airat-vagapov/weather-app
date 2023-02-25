@@ -1,10 +1,18 @@
 export default {
     setCity(state, payload) {
         state.city = payload
-        console.log(state.city)
     },
     setCountry(state, payload) {
         state.country = payload
-        console.log(state.country)
+    },
+
+    setWeatherData(state, payload) {
+        state.weatherData = payload
+    },
+    setCondition(state, payload) {
+        state.condition = payload
+    },
+    setDataLoaded (state, payload) {
+        state.dataisLoaded = payload
     }
 }

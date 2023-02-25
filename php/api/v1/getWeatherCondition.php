@@ -27,8 +27,9 @@ foreach ($arr as $elem) {
 
 
 $conditionRus = [
-    'dayCondition' => $resultDay,
-    'nightCondition' => $resultNight
+    'code' => $conditionCode,
+    'day' => $resultDay,
+    'night' => $resultNight
 ];
 
 
