@@ -1,31 +1,54 @@
 <template>
   <div v-if="dataisLoaded" class="main_container">
-    <TheHeader></TheHeader>
+    <!-- <TheHeader></TheHeader>
     <WeatherView></WeatherView>
-    <TheFooter></TheFooter>
+    <TheFooter></TheFooter> -->
+    <LeftCard></LeftCard>
+    <RightCard></RightCard>
   </div>
   <LoadingPage v-else></LoadingPage>
-  <!-- </div> -->
 </template>
 
 <script>
+import mitt from 'mitt'
 import { mapActions, mapGetters } from "vuex";
-import WeatherView from "@/modules/WeatherView.vue";
+import LeftCard from './components/LeftCard.vue'
+import RightCard from './components/RightCard.vue'
 
 export default {
   components: {
-    WeatherView,
+    LeftCard,
+    RightCard
   },
   computed: {
-    ...mapGetters(['dataisLoaded'])
+    ...mapGetters(['dataisLoaded', 'backImgUrl'])
   },
   methods: {
-    ...mapActions(['getLocation', 'getWeather']),
+    ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather']),
+
+    setBackImg(imgUrl) {
+      const mainContainer = document.querySelector('.main_container')
+      mainContainer.style.background = `url('${imgUrl}&w=1920&h=1080&fit=max') no-repeat center center fixed`
+    }
   },
-  mounted() {
+  created() {
+    this.$emmiter = mitt()
     this.getLocation()
       .then(() => this.getWeather())
-
+      // .then(() => this.getBackPhoto())
+      // .then(() => this.getForecastWeather())
+      // .then(() => {
+      //   this.$emmiter.emit(('done'))
+      // })
+  },
+  mounted() {
+    // this.$emmiter.on('done', () => {
+    //   this.setBackImg(this.backImgUrl)
+    // })
+  },
+  beforeUnmount() {
+    // Clean up event listener
+    // this.$emitter.off('done');
   },
 };
 </script>

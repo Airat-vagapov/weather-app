@@ -1,18 +1,12 @@
 <template>
   <BaseContainer>
-    <WeatherBigCard
-      :dataisLoaded="dataLoaded"
-      :weather-data="weatherData"
-      :condition-day="conditionDay"
-      :condition-night="conditionNight"
-    ></WeatherBigCard>
+    <WeatherBigCard></WeatherBigCard>
   </BaseContainer>
 </template>
 
 <script>
-import WeatherBigCard from "../components/WeatherBigCard.vue";
+import WeatherBigCard from "../components/LeftCard.vue";
 export default {
-  props: ["dataisLoaded", "weatherData", "conditionDay", "conditionNight"],
   components: { WeatherBigCard },
 };
 </script>

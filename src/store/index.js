@@ -14,7 +14,9 @@ const store = createStore({
             city: '',
             country: '',
             weatherData: {},
-            condition: {}
+            forecastWeather:[],
+            condition: {},
+            backImgUrl: ''
         }
     },
     actions,
