@@ -1,10 +1,11 @@
 <template>
   <div v-if="dataisLoaded" class="main_container">
-    <!-- <TheHeader></TheHeader>
-    <WeatherView></WeatherView>
-    <TheFooter></TheFooter> -->
-    <LeftCard></LeftCard>
-    <RightCard></RightCard>
+    <BaseContainer>
+      <div class="flex__row">
+        <LeftCard></LeftCard>
+        <RightCard></RightCard>
+      </div>
+    </BaseContainer>
   </div>
   <LoadingPage v-else></LoadingPage>
 </template>
@@ -35,11 +36,11 @@ export default {
     this.$emmiter = mitt()
     this.getLocation()
       .then(() => this.getWeather())
-      // .then(() => this.getBackPhoto())
-      // .then(() => this.getForecastWeather())
-      // .then(() => {
-      //   this.$emmiter.emit(('done'))
-      // })
+    // .then(() => this.getBackPhoto())
+    // .then(() => this.getForecastWeather())
+    // .then(() => {
+    //   this.$emmiter.emit(('done'))
+    // })
   },
   mounted() {
     // this.$emmiter.on('done', () => {

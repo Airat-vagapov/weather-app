@@ -6,7 +6,7 @@
 
 <style scoped lang="sass">
 .container
-    width: calc(100% - 40px)
+    width: calc(100% - 120px)
     max-width: 1400px
     margin: 0 auto
 </style>
