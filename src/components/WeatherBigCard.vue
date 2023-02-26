@@ -4,22 +4,26 @@
       <div class="temp">
         <i class="wi wi-day-sunny"></i>
         <span class="temp__gradus">
-          {{  + " " + "C°" }}
+          {{ weatherData.temp_c + " " + "C°" }}
         </span>
       </div>
-      <span>{{ conditionDay }}</span>
-      <span>{{ conditionNight }}</span>
+      <span>{{ condition.day }}</span>
+      <span>{{ condition.night }}</span>
     </div>
   </GlassCard>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
       widthOfGlass: "quater",
     };
   },
+  computed: {
+    ...mapGetters(['weatherData', 'condition']),
+  }
 };
 </script>
 

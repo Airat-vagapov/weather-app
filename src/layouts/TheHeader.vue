@@ -13,14 +13,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: "TheHeader",
-  props: ['city', 'country'],
   data() {
     return {
       currentDate: "",
       currentTime: "",
     };
+  },
+  computed: {
+    ...mapGetters(['city', 'country'])
   },
   methods: {
     getIp() {
@@ -59,7 +63,7 @@ export default {
       this.currentDate = date;
       this.currentTime = time;
     },
-    
+
   },
   mounted() {
     this.timeUpdate = setInterval(this.getTime, 1000);

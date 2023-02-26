@@ -1,10 +1,10 @@
 <template>
-  <div class="main_container">
-    <TheHeader :city="city" :country="country"></TheHeader>
-    <WeatherView :condition-day="condition.day" :condition-night="condition.night"></WeatherView>
+  <div v-if="dataisLoaded" class="main_container">
+    <TheHeader></TheHeader>
+    <WeatherView></WeatherView>
     <TheFooter></TheFooter>
   </div>
-  <!-- <LoadingPage v-if="!dataLoaded"></LoadingPage> -->
+  <LoadingPage v-else></LoadingPage>
   <!-- </div> -->
 </template>
 
@@ -17,7 +17,7 @@ export default {
     WeatherView,
   },
   computed: {
-    ...mapGetters(['city', 'country', 'weatherData', 'condition', 'dataisLoaded'])
+    ...mapGetters(['dataisLoaded'])
   },
   methods: {
     ...mapActions(['getLocation', 'getWeather']),
@@ -25,10 +25,7 @@ export default {
   mounted() {
     this.getLocation()
       .then(() => this.getWeather())
-      .then(() => {
-        console.log(this.weatherData)
-        console.log(this.condition)
-      })
+
   },
 };
 </script>

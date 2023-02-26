@@ -29,9 +29,10 @@ export default {
       .then((response) => {
         const condition = response.data
         context.commit('setCondition', condition)
-        
+      })
+      .then(() => {
         const dataisLoaded = true;
-        context.commit('dataisLoaded', dataisLoaded)
+        context.commit('setDataLoaded', dataisLoaded)
       })
       .catch((error) => {
         console.log(error);
