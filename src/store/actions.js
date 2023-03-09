@@ -98,13 +98,25 @@ export default {
   getActualForecastByHour(context) {
     const data = context.getters.forecastWeatherData
     const dayDataByHour = data[0].hour
-    
+
     const currentWeatherDate = context.getters.weatherData.last_updated_epoch
 
 
     const actualData = dayDataByHour.filter((el) => {
       return el.time_epoch >= currentWeatherDate
     })
+
+    console.log(actualData)
+
+    actualData.forEach((el) => {
+      const date = new Date(el.time)
+      const time_hour = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+      
+      el.time_hour = time_hour
+    })
+
+    console.log(actualData)
+
     context.commit('setWeatherByHour', actualData)
 
   }

@@ -2,7 +2,7 @@
     <div>
         <BaseCard :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
             
-            <span>{{weather.time}}</span>
+            <span>{{weather.time_hour}}</span>
             <span>{{weather.temp_c + " " + "C°" }}</span>
         </BaseCard>
     </div>
