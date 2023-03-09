@@ -10,13 +10,17 @@ import getters from './getters.js'
 const store = createStore({
     state() {
         return {
+            currentDate: '',
+            currentTime: '',
+            currentDayName: '',
+            weatherTime: '',
             dataisLoaded: false,
             city: '',
             country: '',
             weatherData: {},
             forecastWeather:[],
             condition: {},
-            backImgUrl: ''
+            weatherByHour: [],
         }
     },
     actions,

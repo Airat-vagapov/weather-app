@@ -5,7 +5,6 @@ export default {
     setCountry(state, payload) {
         state.country = payload
     },
-
     setWeatherData(state, payload) {
         state.weatherData = payload
     },
@@ -15,10 +14,25 @@ export default {
     setCondition(state, payload) {
         state.condition = payload
     },
-    setDataLoaded (state, payload) {
+    setDataLoaded(state, payload) {
         state.dataisLoaded = payload
     },
     setBackImgUrl(state, payload) {
         state.backImgUrl = payload
+    },
+    setCurrentDate(state, payload) {
+        state.currentDate = payload
+    },
+    setCurrentTime(state, payload) {
+        state.currentTime = payload
+    },
+    setCurrentDayName(state, payload) {
+        state.currentDayName = payload
+    },
+    setWeatherTime(state, payload) {
+        state.weatherTime = payload
+    },
+    setWeatherByHour(state, payload) {
+        state.weatherByHour = payload
     }
 }
