@@ -7,7 +7,8 @@
 <style scoped lang="sass">
 div
     display: flex
-    justify-content: center
+    justify-content: flex-start
+    align-items: center
 
 img
     margin-right: 8px

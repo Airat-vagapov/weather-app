@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="sass">
 .content
-    padding: 32px 0
+    padding: 32px 24px
     display: flex
     flex-direction: column
     height: 100%

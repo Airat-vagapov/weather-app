@@ -1,38 +1,56 @@
 <template>
   <BaseBigCard :width="30">
     <CityElement></CityElement>
-    <div>
-      <i class="wi wi-day-sunny"></i>
-    </div>
-    <div class="temp">
-      <span class="temp__gradus">
-        {{ weatherData.temp_c + " " + "C°" }}
-      </span>
-    </div>
+    <BaseCard :type="'col'">
+      <BaseTextWithIcon>
+        <i class="wi wi-day-sunny condition__icon"></i>
+        <span class="condition__text">{{ conditionText }}</span>
+      </BaseTextWithIcon>
+      <div class="temp">
+        <span class="temp__gradus">
+          {{ weatherData.temp_c + " " + "C°" }}
+        </span>
+      </div>
+      <div class="time">
+        <span class="bold">{{ currentDayName }}</span>, <span>{{ weatherTime }}</span>
+      </div>
+    </BaseCard>
 
-    <span>{{ conditionText }}</span>
-    <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span>
-    <span>{{ 'Ветер' + ' ' + weatherData.wind_kph + " " + "км/ч" }}</span>
-    <span>{{ 'Направление ветра' + ' ' + weatherData.wind_dir }}</span>
-    <span>{{ 'Влажность' + ' ' + weatherData.humidity + " " + "%" }}</span>
-    <span>{{ 'Облачность' + ' ' + weatherData.cloud + " " + "%" }}</span>
+    <WeatherByHour></WeatherByHour>
+
+    <BaseCard :type="'row'">
+      <span>{{ forecastWeatherData[0].hour[0].time }}</span>
+      <span>10 C°</span>
+      
+      <i class="wi wi-day-sunny condition__icon"></i>
+    </BaseCard>
   </BaseBigCard>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import CityElement from '@/UI/CityElement.vue';
+import WeatherByHour from './WeatherByHour.vue'
 export default {
   components: {
-    CityElement
+    CityElement,
+    WeatherByHour
   },
   computed: {
-    ...mapGetters(['weatherData', 'condition']),
+    ...mapGetters(['weatherData', 'forecastWeatherData', 'condition', 'currentDayName', 'weatherTime', 'weatherByHour']),
 
     conditionText() {
       return this.weatherData.is_day === 1 ? this.condition.day : this.condition.night
-    }
+    },
+
+    findNextHour() {
+      
+      return 's'
+    },
   },
+  mounted() {
+    
+  }
 };
 </script>
 

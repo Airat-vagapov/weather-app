@@ -9,6 +9,7 @@ import LoadingPage from "@/layouts/LoadingPage.vue"
 import BaseContainer from '@//UI/BaseContainer.vue'
 import BaseTextWithIcon from '@/UI/BaseTextWithIcon.vue'
 import BaseBigCard from '@/UI/BaseBigCard.vue'
+import BaseCard from '@/UI/BaseCard.vue'
 
 
 
@@ -21,6 +22,7 @@ app.provide('axios', app.config.globalProperties.axios)
 app.component('BaseContainer', BaseContainer);
 app.component('BaseTextWithIcon', BaseTextWithIcon);
 app.component('BaseBigCard', BaseBigCard);
+app.component('BaseCard', BaseCard);
 app.component('LoadingPage', LoadingPage);
 
 

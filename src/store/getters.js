@@ -19,5 +19,20 @@ export default {
     },
     backImgUrl(state) {
         return state.backImgUrl
+    },
+    currentDate(state) {
+        return state.currentDate
+    },
+    currentTime(state) {
+        return state.currentTime
+    },
+    currentDayName(state) {
+        return state.currentDayName
+    },
+    weatherTime(state) {
+        return state.weatherTime
+    },
+    weatherByHour(state) {
+        return state.weatherByHour
     }
 }

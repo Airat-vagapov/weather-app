@@ -25,31 +25,20 @@ export default {
     ...mapGetters(['dataisLoaded', 'backImgUrl'])
   },
   methods: {
-    ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather']),
-
-    setBackImg(imgUrl) {
-      const mainContainer = document.querySelector('.main_container')
-      mainContainer.style.background = `url('${imgUrl}&w=1920&h=1080&fit=max') no-repeat center center fixed`
-    }
+    ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour']),
   },
   created() {
     this.$emmiter = mitt()
     this.getLocation()
       .then(() => this.getWeather())
-    // .then(() => this.getBackPhoto())
-    // .then(() => this.getForecastWeather())
-    // .then(() => {
-    //   this.$emmiter.emit(('done'))
-    // })
+      .then(() => this.getActualForecastByHour())
+      .then(() => this.getDayName())
   },
   mounted() {
-    // this.$emmiter.on('done', () => {
-    //   this.setBackImg(this.backImgUrl)
-    // })
+    this.timeUpdateInterval = setInterval(this.getTime, 1000)
   },
   beforeUnmount() {
-    // Clean up event listener
-    // this.$emitter.off('done');
+    clearInterval(this.timeUpdateInterval);
   },
 };
 </script>
