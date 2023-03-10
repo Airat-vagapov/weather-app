@@ -12,7 +12,7 @@
 import { mapGetters } from 'vuex';
 export default {
 computed: {
-    ...mapGetters(['weatherByHour']),
+    ...mapGetters(['weatherByHour'])
 
 },
 
@@ -23,4 +23,5 @@ computed: {
 div
     overflow-y: hidden
     height: 100%
+    justify-content: space-between
 </style>

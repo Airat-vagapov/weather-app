@@ -6,6 +6,7 @@
         <RightCard></RightCard>
       </div>
     </BaseContainer>
+    <CityChoose></CityChoose>
   </div>
   <LoadingPage v-else></LoadingPage>
 </template>
@@ -15,11 +16,13 @@ import mitt from 'mitt'
 import { mapActions, mapGetters } from "vuex";
 import LeftCard from './components/LeftCard.vue'
 import RightCard from './components/RightCard.vue'
+import CityChoose from './modules/CityChoose.vue';
 
 export default {
   components: {
     LeftCard,
-    RightCard
+    RightCard,
+    CityChoose
   },
   computed: {
     ...mapGetters(['dataisLoaded', 'backImgUrl'])

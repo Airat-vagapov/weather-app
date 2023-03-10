@@ -101,21 +101,29 @@ export default {
 
     const currentWeatherDate = context.getters.weatherData.last_updated_epoch
 
-
+    // Собираем данные погоды по часам относительно текущего времени
     const actualData = dayDataByHour.filter((el) => {
       return el.time_epoch >= currentWeatherDate
     })
 
-    console.log(actualData)
+    // Добираем данные погоды по часам, если не хватает на сутки вперед
+    if (actualData.length < 24) {
+      const nextDayWeather = data[1].hour
+      const compareValue = 24 - actualData.length
 
+      for (let i = 0; i < compareValue; i++) {
+        let el = nextDayWeather[i]
+        actualData.push(el)
+      }
+    }
+
+    // Добавляем параметр время в массив 
     actualData.forEach((el) => {
       const date = new Date(el.time)
       const time_hour = date.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-      
+
       el.time_hour = time_hour
     })
-
-    console.log(actualData)
 
     context.commit('setWeatherByHour', actualData)
 

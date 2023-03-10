@@ -4,7 +4,7 @@
     <BaseCard :type="'col'">
       <BaseTextWithIcon>
         <i class="wi wi-day-sunny condition__icon"></i>
-        <span class="condition__text">{{ conditionText }}</span>
+        <span class="condition__text">{{ weatherData.condition.text }}</span>
       </BaseTextWithIcon>
       <div class="temp">
         <span class="temp__gradus">
@@ -17,13 +17,6 @@
     </BaseCard>
 
     <WeatherByHour></WeatherByHour>
-
-    <BaseCard :type="'row'">
-      <span>{{ forecastWeatherData[0].hour[0].time }}</span>
-      <span>10 C°</span>
-      
-      <i class="wi wi-day-sunny condition__icon"></i>
-    </BaseCard>
   </BaseBigCard>
 </template>
 
