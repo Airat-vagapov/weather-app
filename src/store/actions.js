@@ -11,6 +11,7 @@ export default {
       })
   },
   async getWeather(context) {
+    context.commit('setDataLoaded', false)
     const city = context.getters.city;
     await axios
       .get(
@@ -129,10 +130,11 @@ export default {
 
   },
 
-  async getCity(context) {
-    await axios.get('api/v1/getCity.php')
+  async getCity(context, city) {
+    await axios.post('api/v1/getCity.php', {
+      city: JSON.stringify(city)
+    })
       .then((res) => {
-        console.log(res.data)
         context.commit('setCityList', res.data)
       })
       .catch((err) => {

@@ -1,12 +1,16 @@
 <?php
 
-// https://documentation-resources.opendatasoft.com/api/v2/catalog/datasets/gold-prices/records?limit=2&offset=0
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $json = file_get_contents('php://input');
+    $params = json_decode($json);
+    $cityName = json_decode($params->city);
+}
 
 $data = array(
     'dataset' => 'geonames-all-cities-with-a-population-1000',
-    'q' => 'Kazan',
+    'q' => "name=$cityName",
     'lang' => 'en',
-    'rows' => 2,
+    'rows' => 10,
     'sort' => 'name',
     'facet' => 'feature_code',
     'facet' => 'cou_name_en',

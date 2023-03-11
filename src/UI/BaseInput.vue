@@ -1,10 +1,11 @@
 <template>
-    <input :placeholder="placeholderText">
+    <input :value="value" @input="$emit('newValue', $event.target.value)" :placeholder="placeholderText">
 </template>
 
 <script>
 export default {
-    props: ['placeholderText']
+    props: ['value' ,'placeholderText'],
+    emits: ['newValue'],
 }
 </script>
 

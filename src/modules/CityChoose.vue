@@ -9,9 +9,14 @@
                     <h2>Choose the City</h2>
                 </BaseText>
                 <BaseIcon @click="closeModal" class="city__modal__icon" :icon="'close'"></BaseIcon>
-                <BaseInput :placeholderText="'Write the city'"></BaseInput>
-                <!-- <input class="city__modal__input" type="text"> -->
-                <div class="city__modal__elem" v-for="(elem, index) in cityList" :key="index">
+                <div style="display: flex; position: relative;">
+                    <BaseInput class="city__modal__input" :value="cityName" @new-value="newValue => cityName = newValue"
+                        :placeholderText="'Write the city'">
+                    </BaseInput>
+                    <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
+                </div>
+                <div @click="submitCity(elem.city, elem.country)" class="city__modal__elem"
+                    v-for="(elem, index) in cityList" :key="index">
                     <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
                 </div>
             </BaseBigCard>
@@ -23,26 +28,47 @@
 import BaseBigCard from '@/UI/BaseBigCard.vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
-    components: { BaseBigCard },
-    watch: {
-        cityChoose() {
-            this.getCities()
+    data() {
+        return {
+            cityName: ''
         }
     },
+    components: { BaseBigCard },
     computed: {
-        ...mapGetters(['cityChoose', 'cityList']),
+        ...mapGetters(['city', 'cityChoose', 'cityList']),
     },
     methods: {
-        ...mapActions(['getCity']),
-        ...mapMutations(['setCityChoose']),
+        ...mapActions(['getCity', 'getWeather', 'getActualForecastByHour']),
+        ...mapMutations(['setCityChoose', 'setCity', 'setCountry']),
         closeModal() {
             this.setCityChoose(false)
         },
-        getCities() {
-            if (this.cityChoose === true) {
-                this.getCity();
-            }
-        }
+        // showCities() {
+        //     if (this.cityChoose === true) {
+        //         this.getCity();
+        //     }
+        // },
+        submitCity(city, country) {
+            this.setCity(city)
+            this.setCountry(country)
+            this.closeModal()
+            this.getWeather()
+                .then(() => this.getActualForecastByHour())
+        },
+        searchCityName(value) {
+            console.log(value)
+            this.cityName = value
+        },
+        handlerKeyup() {
+            console.log(this.cityName)
+            this.getCity(this.cityName)
+                .then(() => {
+                    console.log(this.cityList)
+                })
+
+        },
+
+
 
     },
 
