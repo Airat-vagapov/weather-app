@@ -12,6 +12,7 @@ import BaseBigCard from '@/UI/BaseBigCard.vue'
 import BaseCard from '@/UI/BaseCard.vue'
 import BaseIcon from '@/UI/BaseIcon.vue'
 import BaseText from '@/UI/BaseText.vue'
+import BaseInput from '@/UI/BaseInput.vue'
 
 
 
@@ -27,6 +28,7 @@ app.component('BaseBigCard', BaseBigCard);
 app.component('BaseCard', BaseCard);
 app.component('BaseIcon', BaseIcon);
 app.component('BaseText', BaseText);
+app.component('BaseInput', BaseInput);
 app.component('LoadingPage', LoadingPage);
 
 

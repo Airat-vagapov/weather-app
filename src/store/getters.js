@@ -37,5 +37,8 @@ export default {
     },
     cityChoose(state) {
         return state.cityChoose
+    },
+    cityList(state) {
+        return state.cityList
     }
 }

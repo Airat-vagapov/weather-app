@@ -17,6 +17,7 @@
     background-color: #fff
     height: 100vh
     z-index: 10
+    display: flex
     &__icon
         position: absolute
         height: 16px
@@ -27,6 +28,13 @@
         transition: color 0.2s ease-in
         &:hover
             color: $blue-color
+    &__elem
+        padding: 12px
+        transition: color 0.2s ease-in
+        &:hover
+            transition: color 0.2s ease-in
+            color: $blue-color
+            cursor: pointer
 
 .fade-in-enter-from,
 .fade-in-leave-to
@@ -51,5 +59,3 @@
 .slide-in-enter-to,
 .slide-in-leave-from
     transform: translateX(0%)
-
-

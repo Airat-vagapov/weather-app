@@ -127,6 +127,17 @@ export default {
 
     context.commit('setWeatherByHour', actualData)
 
+  },
+
+  async getCity(context) {
+    await axios.get('api/v1/getCity.php')
+      .then((res) => {
+        console.log(res.data)
+        context.commit('setCityList', res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
 };

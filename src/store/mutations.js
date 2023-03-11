@@ -37,5 +37,8 @@ export default {
     },
     setCityChoose(state, payload) {
         state.cityChoose = payload
+    },
+    setCityList(state, payload) {
+        state.cityList = payload
     }
 }

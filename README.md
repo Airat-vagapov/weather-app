@@ -30,3 +30,7 @@ https://www.weatherapi.com/
 ### Weather Icons pack
 
 https://erikflowers.github.io/weather-icons/
+
+### Matterial Icons
+
+https://fonts.google.com/icons?selected=Material+Icons:

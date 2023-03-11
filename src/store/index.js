@@ -22,6 +22,8 @@ const store = createStore({
             condition: {},
             weatherByHour: [],
             cityChoose: false,
+            cityList: [],
+            
         }
     },
     actions,
