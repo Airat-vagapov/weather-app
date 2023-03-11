@@ -34,5 +34,8 @@ export default {
     },
     setWeatherByHour(state, payload) {
         state.weatherByHour = payload
+    },
+    setCityChoose(state, payload) {
+        state.cityChoose = payload
     }
 }

@@ -34,5 +34,8 @@ export default {
     },
     weatherByHour(state) {
         return state.weatherByHour
+    },
+    cityChoose(state) {
+        return state.cityChoose
     }
 }
