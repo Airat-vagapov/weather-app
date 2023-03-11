@@ -6,7 +6,9 @@
         <RightCard></RightCard>
       </div>
     </BaseContainer>
-    <CityChoose></CityChoose>
+    <!-- <transition name="fade"> -->
+      <CityChoose></CityChoose>
+    <!-- </transition> -->
   </div>
   <LoadingPage v-else></LoadingPage>
 </template>
@@ -22,10 +24,10 @@ export default {
   components: {
     LeftCard,
     RightCard,
-    CityChoose
+    CityChoose,
   },
   computed: {
-    ...mapGetters(['dataisLoaded', 'backImgUrl'])
+    ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose'])
   },
   methods: {
     ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour']),
@@ -46,9 +48,13 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="sass">
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Ubuntu:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "./sass//vars.sass";
 @import "./sass/removeDefault.sass";
 @import "./sass/styles.sass";
 @import "./css/icons/weather-icons.min.css";
+
+
 </style>
