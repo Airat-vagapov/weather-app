@@ -129,18 +129,24 @@ export default {
     context.commit('setWeatherByHour', actualData)
 
   },
-
+// Получаем список городов по вхождению
   async getCity(context, city) {
+    // 
+    let dataIsLoading = context.state.cityIsLoading
+    dataIsLoading = true;
+    context.commit('setCityIsLoading', dataIsLoading)
     await axios.post('api/v1/getCity.php', {
       city: JSON.stringify(city)
     })
       .then((res) => {
         context.commit('setCityList', res.data)
+        dataIsLoading = false
+        context.commit('setCityIsLoading', dataIsLoading)
       })
       .catch((err) => {
         console.log(err)
       })
-  }
+  },
 
 };
 

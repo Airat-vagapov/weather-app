@@ -6,9 +6,7 @@
         <RightCard></RightCard>
       </div>
     </BaseContainer>
-    <!-- <transition name="fade"> -->
-      <CityChoose></CityChoose>
-    <!-- </transition> -->
+    <CityChoose></CityChoose>
   </div>
   <LoadingPage v-else></LoadingPage>
 </template>
