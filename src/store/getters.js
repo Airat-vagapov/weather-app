@@ -40,5 +40,8 @@ export default {
     },
     cityList(state) {
         return state.cityList
+    },
+    cityIsLoading(state) {
+        return state.cityIsLoading
     }
 }

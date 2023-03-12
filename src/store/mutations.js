@@ -40,5 +40,8 @@ export default {
     },
     setCityList(state, payload) {
         state.cityList = payload
+    },
+    setCityIsLoading(state, payload) {
+        state.cityIsLoading = payload
     }
 }

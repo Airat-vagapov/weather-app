@@ -23,6 +23,7 @@ const store = createStore({
             weatherByHour: [],
             cityChoose: false,
             cityList: [],
+            cityIsLoading: false,
             
         }
     },

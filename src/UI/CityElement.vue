@@ -17,7 +17,6 @@ export default {
         ...mapMutations(["setCityChoose"]),
         choseCity() {
             this.setCityChoose(true);
-            console.log(this.cityChoose);
         }
     },
 }

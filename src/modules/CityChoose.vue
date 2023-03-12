@@ -20,6 +20,9 @@
                     <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
                 </div>
             </BaseBigCard>
+            <div v-if="cityIsLoading" class="city__modal__loader">
+                <span>Loading...</span>
+            </div>
         </div>
     </transition>
 </template>
@@ -30,16 +33,16 @@ import { mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
     data() {
         return {
-            cityName: ''
+            cityName: '',
         }
     },
     components: { BaseBigCard },
     computed: {
-        ...mapGetters(['city', 'cityChoose', 'cityList']),
+        ...mapGetters(['city', 'cityChoose', 'cityList', 'cityIsLoading']),
     },
     methods: {
-        ...mapActions(['getCity', 'getWeather', 'getActualForecastByHour']),
-        ...mapMutations(['setCityChoose', 'setCity', 'setCountry']),
+        ...mapActions(['getCity', 'getWeather', 'getActualForecastByHour', 'getDayName', 'updateWeather']),
+        ...mapMutations(['setCityChoose', 'setCity', 'setCountry', 'setCityList']),
         closeModal() {
             this.setCityChoose(false)
         },
@@ -54,6 +57,11 @@ export default {
             this.closeModal()
             this.getWeather()
                 .then(() => this.getActualForecastByHour())
+                .then(() => this.getDayName())
+                .then(() => {
+                    const emptyCityList = []
+                    this.setCityList(emptyCityList)
+                })
         },
         searchCityName(value) {
             console.log(value)
