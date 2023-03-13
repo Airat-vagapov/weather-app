@@ -1,5 +1,5 @@
 <template>
-    <SideModal :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal">
+    <SideModal :openLoader="true" :isOpen="true" @close-modal="closeModal">
         <BaseText>
             <h2>Choose the City</h2>
         </BaseText>
