@@ -1,34 +1,23 @@
 <template>
-    <transition name="fade-in">
-        <div @click="closeModal" v-if="cityChoose" class="modal__background"></div>
-    </transition>
-    <transition name="slide-in">
-        <div v-if="cityChoose" class="city__modal">
-            <BaseBigCard :type="'col'" :width="100">
-                <BaseText>
-                    <h2>Choose the City</h2>
-                </BaseText>
-                <BaseIcon @click="closeModal" class="city__modal__icon" :icon="'close'"></BaseIcon>
-                <div style="display: flex; position: relative;">
-                    <BaseInput class="city__modal__input" :value="cityName" @new-value="newValue => cityName = newValue"
-                        :placeholderText="'Write the city'">
-                    </BaseInput>
-                    <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
-                </div>
-                <div @click="submitCity(elem.city, elem.country)" class="city__modal__elem"
-                    v-for="(elem, index) in cityList" :key="index">
-                    <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
-                </div>
-            </BaseBigCard>
-            <div v-if="cityIsLoading" class="city__modal__loader">
-                <span>Loading...</span>
-            </div>
+    <SideModal :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal">
+        <BaseText>
+            <h2>Choose the City</h2>
+        </BaseText>
+        <BaseIcon @click="closeModal" class="city__modal__icon" :icon="'close'"></BaseIcon>
+        <div style="display: flex; position: relative;">
+            <BaseInput class="city__modal__input" :value="cityName" @new-value="newValue => cityName = newValue"
+                :placeholderText="'Write the city'">
+            </BaseInput>
+            <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
         </div>
-    </transition>
+        <div @click="submitCity(elem.city, elem.country)" class="city__modal__elem" v-for="(elem, index) in cityList"
+            :key="index">
+            <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
+        </div>
+    </SideModal>
 </template>
 
 <script>
-import BaseBigCard from '@/UI/BaseBigCard.vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
     data() {
@@ -36,7 +25,6 @@ export default {
             cityName: '',
         }
     },
-    components: { BaseBigCard },
     computed: {
         ...mapGetters(['city', 'cityChoose', 'cityList', 'cityIsLoading']),
     },
@@ -46,11 +34,6 @@ export default {
         closeModal() {
             this.setCityChoose(false)
         },
-        // showCities() {
-        //     if (this.cityChoose === true) {
-        //         this.getCity();
-        //     }
-        // },
         submitCity(city, country) {
             this.setCity(city)
             this.setCountry(country)
@@ -73,13 +56,8 @@ export default {
                 .then(() => {
                     console.log(this.cityList)
                 })
-
         },
-
-
-
     },
-
 }
 </script>
 
