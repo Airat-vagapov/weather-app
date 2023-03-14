@@ -32,19 +32,33 @@ $json = json_decode($response);
 
 $result_arr = $json->records;
 
-$result = array();
+$cities = array();
 foreach ($result_arr as $el) {
     $fields = $el->fields;
     $city = $fields->name;
     $country = $fields->cou_name_en;
     $population = $fields->population;
-    $item = array(
-        'city' => $city,
-        'country' => $country,
-        'population' => $population
-    );
 
-    $result[] = $item;
+    if ($population > 30000) {
+        $item = array(
+            'city' => $city,
+            'country' => $country,
+            'population' => $population
+        );
+        $cities[] = $item;
+    }
 };
 
-echo json_encode($result);
+function arrComparsionByPopulation($a, $b)
+{
+    if ($a['population'] == $b['population']) {
+        return 0;
+    }
+    return ($a['population'] < $b['population']) ? 1 : -1;
+};
+
+usort($cities, 'arrComparsionByPopulation');
+
+// var_dump($cities);
+
+echo json_encode($cities);
