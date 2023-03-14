@@ -1,5 +1,5 @@
 <template>
-    <SideModal :openLoader="true" :isOpen="true" @close-modal="closeModal">
+    <SideModal :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal">
         <BaseText>
             <h2>Choose the City</h2>
         </BaseText>
@@ -54,7 +54,7 @@ export default {
             console.log(this.cityName)
             this.getCity(this.cityName)
                 .then(() => {
-                    console.log(this.cityList)
+                    // console.log(this.cityList)
                 })
         },
     },

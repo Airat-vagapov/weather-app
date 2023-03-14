@@ -12,15 +12,34 @@
             <BaseBigCard :type="'col'" :width="100">
                 <slot></slot>
             </BaseBigCard>
-            <div v-if="openLoader" class="modal__loader">
-                <div class="modal__loader__container">
-                    <i class="wi wi-day-sunny modal__loader__icon el1"></i>
-                    <i class="wi wi-day-cloudy modal__loader__icon el2"></i>
-                    <i class="wi wi-day-haze modal__loader__icon el3"></i>
-                    <i class="wi wi-snow modal__loader__icon el4"></i>
-                    <i class="wi wi-hail modal__loader__icon el5"></i>
+            <transition name="fade-in">
+                <div v-if="openLoader" class="modal__loader">
+                    <div class="modal__loader__container">
+                        <div class="modal__loader__icons">
+                            <div class=" modal__loader__elem el1">
+                                <i class="wi wi-day-sunny modal__loader__icon"></i>
+                            </div>
+                            <div class=" modal__loader__elem el2">
+                                <i class="wi wi-storm-showers modal__loader__icon"></i>
+                            </div>
+                            <div class="el3 modal__loader__elem">
+                                <i class="wi wi-day-haze modal__loader__icon"></i>
+                            </div>
+                            <div class="el4 modal__loader__elem">
+                                <i class="wi wi-snow modal__loader__icon"></i>
+                            </div>
+                        <div class="el5 modal__loader__elem">
+                            <i class="wi wi-hail modal__loader__icon"></i>
+                        </div>
+                    </div>
+                        <!-- <div class="modal__loader__dots">
+                                                <div class="modal__loader__dot dot_1"></div>
+                                                <div class="modal__loader__dot dot_2"></div>
+                                                <div class="modal__loader__dot dot_3"></div>
+                                            </div> -->
+                    </div>
                 </div>
-            </div>
+            </transition>
 
         </div>
     </transition>
@@ -40,18 +59,16 @@ export default {
     },
     components: { BaseBigCard },
     watch: {
-        animIsFinish() {
-            if (this.animIsFinish) {
-                console.log(this.animIsFinish)
+        // animIsFinish() {
+        //     if (this.animIsFinish) {
+        //         this.loaderAnimation()
+        //     }
+        // },
+        openLoader() {
+            if (this.openLoader) {
                 this.loaderAnimation()
             }
-        },
-        // openLoader() {
-        //     console.log(this.isOpen)
-        //     if (this.openLoader) {
-        //         setTimeout(this.loaderAnimation(), 4000)
-        //     }
-        // }
+        }
     },
     methods: {
         closeModal() {
@@ -62,35 +79,36 @@ export default {
         },
         loaderAnimation() {
             this.animIsFinish = false
-            let t1 = gsap.timeline({ repeat: -1 })
-            // t1.set('.el2', { x: -100 });
-            // t1.set('.el3', { x: -140 });
-            // t1.set('.el4', { x: -260 });
-            // t1.set('.el5', { x: -370 });
+            this.$nextTick(() => {
+                let t1 = gsap.timeline({ repeat: -1 })
+                t1.set('.el1', { x: 100, opacity: 0 });
+                t1.set('.el2', { x: 100, opacity: 0 });
+                t1.set('.el3', { x: 100, opacity: 0 });
+                t1.set('.el4', { x: 100, opacity: 0 });
+                t1.set('.el5', { x: 100, opacity: 0 });
 
-            t1.fromTo('.el1', { x: 0 }, { duration: 1, x: -200, opacity: 0 }, 1)
-            // t1.set('.el1', { x: 100 });
+                t1.fromTo('.el1', { x: 100, opacity: 0 }, { duration: 0.4, x: 0, opacity: 1, ease: 'linear' }, 1)
+                t1.fromTo('.el1', { x: 0, opacity: 1 }, { duration: 0.4, x: -100, opacity: 0, ease: 'linear' }, '>')
+                t1.fromTo('.el2', { x: 100, opacity: 0 }, { duration: 0.4, x: 0, opacity: 1, ease: 'linear' }, '>')
+                t1.fromTo('.el2', { x: 0, opacity: 1 }, { duration: 0.4, x: -100, opacity: 0, ease: 'linear' }, '>')
+                t1.fromTo('.el3', { x: 100, opacity: 0 }, { duration: 0.4, x: 0, opacity: 1, ease: 'linear' }, '>')
+                t1.fromTo('.el3', { x: 0, opacity: 1 }, { duration: 0.4, x: -100, opacity: 0, ease: 'linear' }, '>')
+                t1.fromTo('.el4', { x: 100, opacity: 0 }, { duration: 0.4, x: 0, opacity: 1, ease: 'linear' }, '>')
+                t1.fromTo('.el4', { x: 0, opacity: 1 }, { duration: 0.4, x: -100, opacity: 0, ease: 'linear' }, '>')
+                t1.fromTo('.el5', { x: 100, opacity: 0 }, { duration: 0.4, x: 0, opacity: 1, ease: 'linear' }, '>')
+                t1.fromTo('.el5', { x: 0, opacity: 1 }, { duration: 0.4, x: -100, opacity: 0, ease: 'linear' }, '>')
 
-            // t1.set('.el2', { x: -100 });
-            t1.fromTo('.el2', { x: 0 }, { duration: 1, x: -250, opacity: 0 }, '>')
-            // t1.set('.el2', { x: 100 });
+                t1.play()
+                t1.yoyo(true)
 
-            t1.fromTo('.el3', { x: -140 }, { duration: 1, x: -340, opacity: 0 }, '>')
-            // t1.set('.el3', { x: 100 });
+                // let t2 = gsap.timeline({ repeat: -1 })
+                // t2.fromTo('.dot_1', { y: 0 }, { y: 20, duration: 0.2, ease: 'linear' }, 1)
+                // t2.fromTo('.dot_2', { y: 0 }, { y: 20, duration: 0.2, ease: 'linear' }, '>')
+                // t2.fromTo('.dot_3', { y: 0 }, { y: 20, duration: 0.2, ease: 'linear' }, '>')
 
-            t1.fromTo('.el4', { x: -260 }, { duration: 1, x: -450, opacity: 0 }, '>')
-            // t1.set('.el4', { x: 100 });
-
-            t1.fromTo('.el5', { x: -370 }, { duration: 1, x: -560, opacity: 0 }, '>')
-            // t1.set('.el5', { x: 100 });
-
-            t1.play()
-            t1.yoyo(true)
-        }
-    },
-    mounted() {
-        if (this.openLoader) {
-            this.loaderAnimation()
+                // t2.play()
+                // t2.yoyo(true)
+            })
         }
     },
 }
