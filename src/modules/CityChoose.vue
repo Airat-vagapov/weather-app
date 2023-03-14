@@ -10,8 +10,8 @@
             </BaseInput>
             <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
         </div>
-        <div @click="submitCity(elem.city, elem.country)" class="city__modal__elem" v-for="(elem, index) in cityList"
-            :key="index">
+        <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
+            v-for="(elem, index) in cityList" :key="index">
             <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
         </div>
     </SideModal>
@@ -23,6 +23,7 @@ export default {
     data() {
         return {
             cityName: '',
+            emptyCityList: false
         }
     },
     computed: {
@@ -30,13 +31,14 @@ export default {
     },
     methods: {
         ...mapActions(['getCity', 'getWeather', 'getActualForecastByHour', 'getDayName', 'updateWeather']),
-        ...mapMutations(['setCityChoose', 'setCity', 'setCountry', 'setCityList']),
+        ...mapMutations(['setCityChoose', 'setCity', 'setCountry', 'setCityList', 'setcityCoordinates']),
         closeModal() {
             this.setCityChoose(false)
         },
-        submitCity(city, country) {
+        submitCity(city, country, coor) {
             this.setCity(city)
             this.setCountry(country)
+            this.setcityCoordinates(coor)
             this.closeModal()
             this.getWeather()
                 .then(() => this.getActualForecastByHour())
@@ -54,7 +56,8 @@ export default {
             console.log(this.cityName)
             this.getCity(this.cityName)
                 .then(() => {
-                    // console.log(this.cityList)
+                    console.log(this.cityList)
+                    // if(this.cityList)
                 })
         },
     },

@@ -1,4 +1,7 @@
 export default {
+    setcityCoordinates(state, payload) {
+        state.cityCoordinates = payload
+    },
     setCity(state, payload) {
         state.city = payload
     },

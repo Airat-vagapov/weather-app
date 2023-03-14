@@ -6,16 +6,20 @@ export default {
       .then((response) => {
         const city = response.data.city;
         const country = response.data.country_name;
+        const lat = response.data.lat
+        const lon = response.data.lon
+        const coor = lat + ',' + lon
         context.commit('setCity', city)
         context.commit('setCountry', country)
+        context.commit('setcityCoordinates', coor)
       })
   },
   async getWeather(context) {
     context.commit('setDataLoaded', false)
-    const city = context.getters.city;
+    const coordinates = context.getters.cityCoordinates
     await axios
       .get(
-        `http://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${city}&days=5&alerts=yes&aqi=yes`
+        `http://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=5&alerts=yes&aqi=yes`
       )
       .then((response) => {
         const currentWeather = response.data.current;
@@ -129,7 +133,7 @@ export default {
     context.commit('setWeatherByHour', actualData)
 
   },
-// Получаем список городов по вхождению
+  // Получаем список городов по вхождению
   async getCity(context, city) {
     // 
     let dataIsLoading = context.state.cityIsLoading
@@ -140,6 +144,7 @@ export default {
     })
       .then((res) => {
         context.commit('setCityList', res.data)
+        context.commit('setcityCoordinates', res.data.coordinates)
         dataIsLoading = false
         context.commit('setCityIsLoading', dataIsLoading)
       })

@@ -43,5 +43,8 @@ export default {
     },
     cityIsLoading(state) {
         return state.cityIsLoading
+    },
+    cityCoordinates(state) {
+        return state.cityCoordinates
     }
 }

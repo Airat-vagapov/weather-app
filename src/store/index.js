@@ -15,6 +15,7 @@ const store = createStore({
             currentDayName: '',
             weatherTime: '',
             dataisLoaded: false,
+            cityCoordinates: '',
             city: '',
             country: '',
             weatherData: {},

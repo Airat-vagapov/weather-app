@@ -10,8 +10,8 @@ $data = array(
     'dataset' => 'geonames-all-cities-with-a-population-1000',
     'q' => "name=$cityName",
     'lang' => 'en',
-    'rows' => 10,
-    'sort' => 'name',
+    'rows' => 15,
+    'sort' => 'population',
     'facet' => 'feature_code',
     'facet' => 'cou_name_en',
     'facet' => 'timezone',
@@ -38,12 +38,17 @@ foreach ($result_arr as $el) {
     $city = $fields->name;
     $country = $fields->cou_name_en;
     $population = $fields->population;
+    $coordinates1 = strVal($fields->coordinates[0]);
+    $coordinates2 = strVal($fields->coordinates[1]);
 
-    if ($population > 30000) {
+    $coordinates = $coordinates1 . ',' . $coordinates2;
+
+    if ($population > 50000) {
         $item = array(
             'city' => $city,
             'country' => $country,
-            'population' => $population
+            'population' => $population,
+            'coordinates' => $coordinates
         );
         $cities[] = $item;
     }
@@ -58,7 +63,5 @@ function arrComparsionByPopulation($a, $b)
 };
 
 usort($cities, 'arrComparsionByPopulation');
-
-// var_dump($cities);
 
 echo json_encode($cities);
