@@ -8,7 +8,7 @@
     </BaseContainer>
     <CityChoose></CityChoose>
   </div>
-  <LoadingPage v-else></LoadingPage>
+  <LoadingPage :openLoader="true" v-else></LoadingPage>
 </template>
 
 <script>

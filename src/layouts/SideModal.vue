@@ -33,10 +33,10 @@
                         </div>
                     </div>
                         <!-- <div class="modal__loader__dots">
-                                                <div class="modal__loader__dot dot_1"></div>
-                                                <div class="modal__loader__dot dot_2"></div>
-                                                <div class="modal__loader__dot dot_3"></div>
-                                            </div> -->
+                                                    <div class="modal__loader__dot dot_1"></div>
+                                                    <div class="modal__loader__dot dot_2"></div>
+                                                    <div class="modal__loader__dot dot_3"></div>
+                                                </div> -->
                     </div>
                 </div>
             </transition>
@@ -52,11 +52,6 @@ import { gsap } from "gsap";
 export default {
     emits: ['closeModal'],
     props: ['isOpen', 'openLoader'],
-    data() {
-        return {
-            animIsFinish: false
-        }
-    },
     components: { BaseBigCard },
     watch: {
         // animIsFinish() {
@@ -73,9 +68,6 @@ export default {
     methods: {
         closeModal() {
             this.$emit('closeModal')
-        },
-        finishAnim() {
-            this.animIsFinish = true
         },
         loaderAnimation() {
             this.animIsFinish = false
