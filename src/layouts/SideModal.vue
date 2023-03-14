@@ -10,7 +10,8 @@
     <transition name="slide-in">
         <div v-if="isOpen" class="modal">
             <BaseBigCard :type="'col'" :width="100">
-                <slot></slot>
+                <slot name="content"></slot>
+                <slot v-if="error" name="errorPage"></slot>
             </BaseBigCard>
             <transition name="fade-in">
                 <div v-if="openLoader" class="modal__loader">
@@ -33,10 +34,10 @@
                         </div>
                     </div>
                         <!-- <div class="modal__loader__dots">
-                                                    <div class="modal__loader__dot dot_1"></div>
-                                                    <div class="modal__loader__dot dot_2"></div>
-                                                    <div class="modal__loader__dot dot_3"></div>
-                                                </div> -->
+                                                <div class="modal__loader__dot dot_1"></div>
+                                                <div class="modal__loader__dot dot_2"></div>
+                                                <div class="modal__loader__dot dot_3"></div>
+                                            </div> -->
                     </div>
                 </div>
             </transition>
@@ -51,14 +52,9 @@ import { gsap } from "gsap";
 
 export default {
     emits: ['closeModal'],
-    props: ['isOpen', 'openLoader'],
+    props: ['isOpen', 'openLoader', 'error'],
     components: { BaseBigCard },
     watch: {
-        // animIsFinish() {
-        //     if (this.animIsFinish) {
-        //         this.loaderAnimation()
-        //     }
-        // },
         openLoader() {
             if (this.openLoader) {
                 this.loaderAnimation()
