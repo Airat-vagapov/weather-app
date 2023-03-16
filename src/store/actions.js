@@ -1,19 +1,67 @@
 import axios from 'axios';
 
+
 export default {
   async getLocation(context) {
+    await context.dispatch('getLocationByGeo')
+    if (context.state.cityCoordinates === '') {
+      await context.dispatch('getLocationByIp')
+    }
+  },
+
+  // Получение координат
+  async getLocationByGeo(context) {
+    console.log('here')
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const coordByLocation = position.coords.latitude + ',' + position.coords.longitude
+          resolve(context.commit('setcityCoordinates', coordByLocation))
+        })
+      } else {
+        reject(new Error('Geolocaion not supported'))
+      }
+    })
+  },
+
+  async getLocationByIp(context) {
+    console.log('here')
     await axios.get('/api/v1/getLocation.php')
       .then((response) => {
         const city = response.data.city;
         const country = response.data.country_name;
         const lat = response.data.lat
         const lon = response.data.lon
-        const coor = lat + ',' + lon
+        const coords = lat + ',' + lon
         context.commit('setCity', city)
         context.commit('setCountry', country)
-        context.commit('setcityCoordinates', coor)
+        context.commit('setcityCoordinates', coords)
+
       })
   },
+
+
+  // // Пробуем получить координаты по геолокации
+
+
+  // }
+  // if (navigator.geolocation) {
+  //   await navigator.geolocation.getCurrentPosition(getCoordsByLocation);
+  // } else {
+  //   // Если нет геолокации ишем по IP
+  //   await axios.get('/api/v1/getLocation.php')
+  //     .then((response) => {
+  //       const city = response.data.city;
+  //       const country = response.data.country_name;
+  //       const lat = response.data.lat
+  //       const lon = response.data.lon
+  //       const coords = lat + ',' + lon
+
+  //     })
+  // }
+
+
+
   async getWeather(context) {
     context.commit('setDataLoaded', false)
     const coordinates = context.getters.cityCoordinates

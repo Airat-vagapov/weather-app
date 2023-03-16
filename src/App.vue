@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import mitt from 'mitt'
+// import mitt from 'mitt'
 import { mapActions, mapGetters } from "vuex";
 import LeftCard from './components/LeftCard.vue'
 import RightCard from './components/RightCard.vue'
@@ -25,13 +25,13 @@ export default {
     CityChoose,
   },
   computed: {
-    ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose'])
+    ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose', 'cityCoordinates'])
   },
   methods: {
     ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour']),
   },
   created() {
-    this.$emmiter = mitt()
+    // this.$emmiter = mitt()
     this.getLocation()
       .then(() => this.getWeather())
       .then(() => this.getActualForecastByHour())
