@@ -2,22 +2,14 @@ import axios from 'axios';
 
 
 export default {
-  async getLocation(context) {
-    await context.dispatch('getLocationByGeo')
-    if (context.state.cityCoordinates === '') {
-      await context.dispatch('getLocationByIp')
-    }
-  },
-
   // Получение координат
-  async getLocationByGeo(context) {
-    console.log('here')
+  getLocation(context) {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           const coordByLocation = position.coords.latitude + ',' + position.coords.longitude
           resolve(context.commit('setcityCoordinates', coordByLocation))
-        })
+        }, () => { resolve(context.dispatch('getLocationByIp')) })
       } else {
         reject(new Error('Geolocaion not supported'))
       }
@@ -25,7 +17,6 @@ export default {
   },
 
   async getLocationByIp(context) {
-    console.log('here')
     await axios.get('/api/v1/getLocation.php')
       .then((response) => {
         const city = response.data.city;
@@ -36,31 +27,8 @@ export default {
         context.commit('setCity', city)
         context.commit('setCountry', country)
         context.commit('setcityCoordinates', coords)
-
       })
   },
-
-
-  // // Пробуем получить координаты по геолокации
-
-
-  // }
-  // if (navigator.geolocation) {
-  //   await navigator.geolocation.getCurrentPosition(getCoordsByLocation);
-  // } else {
-  //   // Если нет геолокации ишем по IP
-  //   await axios.get('/api/v1/getLocation.php')
-  //     .then((response) => {
-  //       const city = response.data.city;
-  //       const country = response.data.country_name;
-  //       const lat = response.data.lat
-  //       const lon = response.data.lon
-  //       const coords = lat + ',' + lon
-
-  //     })
-  // }
-
-
 
   async getWeather(context) {
     context.commit('setDataLoaded', false)
@@ -71,11 +39,18 @@ export default {
       )
       .then((response) => {
         const currentWeather = response.data.current;
+        const location = response.data.location;
         const forecastWeather = response.data.forecast.forecastday
         const conditionCode = currentWeather.condition.code;
+        const city = location.name
+        const country = location.country
 
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
+        if (context.state.city === '' && context.state.country === '') {
+          context.commit('setCity', city)
+          context.commit('setCountry', country)
+        }
 
         return axios.post("/api/v1/getWeatherCondition.php", {
           code: JSON.stringify({ conditionCode })
