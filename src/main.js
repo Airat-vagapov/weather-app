@@ -4,6 +4,8 @@ import App from '@/App.vue'
 import store from './store/index.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// import PerfectScrollbar from 'vue3-perfect-scrollbar'
+// import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
 
 import LoadingPage from "@/layouts/LoadingPage.vue"
 import SideModalLoader from '@/layouts/LoadingPage.vue'
@@ -22,6 +24,12 @@ import SideModal from '@/layouts/SideModal.vue'
 const app = createApp(App)
 app.use(store)
 app.use(VueAxios, axios)
+// app.use(PerfectScrollbar, {
+//     watchOptions: true,
+//     options: {
+//         suppressScrollX: true
+//     }
+// })
 app.provide('axios', app.config.globalProperties.axios)
 
 app.component('BaseContainer', BaseContainer);
