@@ -35,11 +35,11 @@ input
     transition: all 0.2s ease-in
     padding: 8px 12px
     &:hover
-        transition: all 0.2s ease-in
+        transition: all 0.1s ease-in
         border-color: $blue-color
     &:focus
-        transition: all 0.2s ease-in
-        border-color: $blue-color
+        transition: all 0.1s ease-in
+        border-bottom: 2px solid $blue-color
 
 .input__error__text
     color: $red-color

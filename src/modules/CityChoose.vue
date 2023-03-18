@@ -23,7 +23,7 @@
                     No found!
                 </BaseText>
                 <BaseText :size="16">
-                    Try another query
+                    Try another request
                 </BaseText>
 
             </BaseCard>
