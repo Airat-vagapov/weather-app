@@ -56,7 +56,7 @@ export default {
         context.commit('setCountry', country)
         // }
 
-        return axios.post("/api/v1/getWeatherCondition.php",
+        return axios.post("/api/v1/getWeatherIcon.php",
           JSON.stringify({
             code: conditionCode,
             isDay: is_day
@@ -130,7 +130,7 @@ export default {
     context.commit('setCurrentTime', time)
   },
 
-  getActualForecastByHour(context) {
+  async getActualForecastByHour(context) {
     const data = context.getters.forecastWeatherData
     const dayDataByHour = data[0].hour
 
@@ -159,6 +159,9 @@ export default {
 
       el.time_hour = time_hour
     })
+
+    // Добавялем иконки относительно погоды
+    await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
 
     context.commit('setWeatherByHour', actualData)
 

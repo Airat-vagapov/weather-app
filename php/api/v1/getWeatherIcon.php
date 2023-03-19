@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $isDay = json_decode(($data->isDay));
 }
 
-$translateData = file_get_contents('../conditions.json');
+// $translateData = file_get_contents('../conditions.json');
 $iconsByCondition = file_get_contents(('../icons-by-condition.json'));
 
 $arr = json_decode($iconsByCondition);
