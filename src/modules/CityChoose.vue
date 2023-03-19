@@ -5,19 +5,20 @@
                 <h2>Choose the City</h2>
             </BaseText>
             <BaseIcon @click="closeModal" class="city__modal__icon" :icon="'close'"></BaseIcon>
-            <div style="display: flex; flex-wrap: wrap; position: relative;">
+            <div style="display: flex; flex-wrap: wrap; position: relative; margin-bottom: 32px;">
                 <BaseInput :valid="isValid" :value="cityName" @new-value="newValue => cityName = newValue"
                     :placeholderText="'Write the city'">
                 </BaseInput>
                 <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
             </div>
+            
+                <TheScroll>
+                    <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
+                        v-for="(elem, index) in cityList" :key="index">
+                        <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
+                    </div>
+                </TheScroll>
 
-            <div ref="scrollContent">
-                <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
-                    v-for="(elem, index) in cityList" :key="index">
-                    <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
-                </div>
-            </div>
 
         </template>
         <template v-slot:errorPage>
@@ -36,8 +37,7 @@
 </template>
 
 <script>
-import PerfectScrollbar from 'vue3-perfect-scrollbar';
-import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';
+import TheScroll from '@/UI/TheScroll.vue';
 import { mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
     data() {
@@ -47,7 +47,7 @@ export default {
             isValid: true
         };
     },
-    // components: { VuePerfectScrollbar },
+
     watch: {
         cityList: {
             handler() {
@@ -55,7 +55,7 @@ export default {
                     const scrollContainer = this.$refs.scrollContent
                     console.log(scrollContainer)
                     if (scrollContainer) {
-                        new PerfectScrollbar(scrollContainer, { suppressScrollX: true })
+                        // new PerfectScrollbar(scrollContainer, { suppressScrollX: true })
                     }
                 })
             },
@@ -105,15 +105,13 @@ export default {
                         }
                     });
             }
-            console.log(this.isValid);
         },
     },
-    mounted() {
-
+    components: {
+        TheScroll
     }
 }
 </script>
-
-<style scoped lang="sass">
+<style  scoped lang="sass">
 @import '@/sass/modules/cityChoose.sass'
 </style>

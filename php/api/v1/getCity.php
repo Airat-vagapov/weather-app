@@ -43,7 +43,7 @@ foreach ($result_arr as $el) {
 
     $coordinates = $coordinates1 . ',' . $coordinates2;
 
-    if ($population > 10000) {
+    if ($population > 1000) {
         $item = array(
             'city' => $city,
             'country' => $country,

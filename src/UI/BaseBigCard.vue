@@ -9,7 +9,7 @@ export default {
     props: ['width'],
     computed: {
         widthValue() {
-            return { width: this.width + '%' }
+            return { flexBasis: this.width + '%' }
         }
     }
 }
@@ -20,6 +20,6 @@ export default {
     padding: 32px 24px
     display: flex
     flex-direction: column
-    height: 100%
-    width: 50%
+    // height: 100%
+    // width: 50%
 </style>
