@@ -3,7 +3,7 @@
     <CityElement></CityElement>
     <BaseCard :type="'col'">
       <BaseTextWithIcon>
-        <i class="wi wi-day-sunny condition__icon"></i>
+        <i :class="currentIconName" class="wi condition__icon"></i>
         <span class="condition__text">{{ weatherData.condition.text }}</span>
         <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'"></BaseIcon>
       </BaseTextWithIcon>
@@ -43,7 +43,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'condition', 'currentDayName', 'weatherTime', 'weatherByHour']),
+    ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'currentIconName', 'currentDayName', 'weatherTime', 'weatherByHour']),
 
     conditionText() {
       return this.weatherData.is_day === 1 ? this.condition.day : this.condition.night

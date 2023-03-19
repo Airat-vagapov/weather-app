@@ -14,8 +14,8 @@ export default {
     setForecastWeatherData(state, payload) {
         state.forecastWeather = payload
     },
-    setCondition(state, payload) {
-        state.condition = payload
+    setCurrentIconName(state, payload) {
+        state.currentIconName = payload
     },
     setDataLoaded(state, payload) {
         state.dataisLoaded = payload

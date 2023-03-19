@@ -41,24 +41,31 @@ export default {
         const currentWeather = response.data.current;
         const location = response.data.location;
         const forecastWeather = response.data.forecast.forecastday
+
         const conditionCode = currentWeather.condition.code;
+        const is_day = currentWeather.is_day;
+
         const city = location.name
         const country = location.country
+
 
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
         // if (context.state.city === '' && context.state.country === '') {
-          context.commit('setCity', city)
-          context.commit('setCountry', country)
+        context.commit('setCity', city)
+        context.commit('setCountry', country)
         // }
 
-        return axios.post("/api/v1/getWeatherCondition.php", {
-          code: JSON.stringify({ conditionCode })
-        })
+        return axios.post("/api/v1/getWeatherCondition.php",
+          JSON.stringify({
+            code: conditionCode,
+            isDay: is_day
+          }),
+        )
       })
       .then((response) => {
-        const condition = response.data
-        context.commit('setCondition', condition)
+        const iconName = response.data
+        context.commit('setCurrentIconName', iconName)
       })
       .then(() => {
         const dataisLoaded = true;

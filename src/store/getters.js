@@ -11,8 +11,8 @@ export default {
     forecastWeatherData(state) {
         return state.forecastWeather
     },
-    condition(state) {
-        return state.condition
+    currentIconName(state) {
+        return state.currentIconName
     },
     dataisLoaded(state) {
         return state.dataisLoaded
