@@ -12,7 +12,7 @@
                 <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
             </div>
             
-                <TheScroll>
+                <TheScroll v-if="!emptyCityList">
                     <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
                         v-for="(elem, index) in cityList" :key="index">
                         <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>

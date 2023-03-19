@@ -31,15 +31,13 @@ export default {
     WeatherByHour
   },
   methods: {
-    ...mapActions(['getLocation', 'getWeather']),
+    ...mapActions(['getLocation', 'getWeather', 'getActualForecastByHour']),
     ...mapMutations(['setDataLoaded']),
     updateLocation() {
       this.setDataLoaded(false)
-      console.log(this.dataisLoaded)
       this.getLocation()
         .then(() => this.getWeather())
-      // this.setDataLoaded(true)
-      // console.log(this.dataisLoaded)
+        .then(() => this.getActualForecastByHour())
     }
   },
   computed: {

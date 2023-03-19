@@ -162,9 +162,9 @@ export default {
 
     // Добавялем иконки относительно погоды
     await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
-
-    context.commit('setWeatherByHour', actualData)
-
+      .then((res) => {
+        context.commit('setWeatherByHour', res.data)
+      })
   },
   // Получаем список городов по вхождению
   async getCity(context, city) {

@@ -10,7 +10,7 @@ $iconsByCondition = file_get_contents(('../icons-by-condition.json'));
 $arr = json_decode($iconsByCondition);
 
 
-for ($i = 0; $i <= 24; $i++) {
+for ($i = 0; $i < 24; $i++) {
 
     $code = $data[$i]->condition->code;
 
