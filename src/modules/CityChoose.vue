@@ -47,21 +47,6 @@ export default {
             isValid: true
         };
     },
-
-    watch: {
-        cityList: {
-            handler() {
-                this.$nextTick(() => {
-                    const scrollContainer = this.$refs.scrollContent
-                    console.log(scrollContainer)
-                    if (scrollContainer) {
-                        // new PerfectScrollbar(scrollContainer, { suppressScrollX: true })
-                    }
-                })
-            },
-            deep: true
-        }
-    },
     computed: {
         ...mapGetters(["city", "cityChoose", "cityList", "cityIsLoading"]),
     },

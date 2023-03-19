@@ -1,7 +1,6 @@
 <template>
     <div @click="choseCity">
         <BaseIcon class="location__icon" :icon="'location_on'"></BaseIcon>
-        <!-- <img :src='require("@/assets/icons/location-pin.svg")'> -->
         <span>{{ city + ', ' + country }}</span>
     </div>
 </template>
@@ -26,7 +25,6 @@ export default {
 @import '@/sass/vars.sass'
 div
     display: flex
-    // justify-content: center
     align-items: center
     margin-bottom: 24px
     &:hover 

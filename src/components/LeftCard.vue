@@ -5,6 +5,7 @@
       <BaseTextWithIcon>
         <i class="wi wi-day-sunny condition__icon"></i>
         <span class="condition__text">{{ weatherData.condition.text }}</span>
+        <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'"></BaseIcon>
       </BaseTextWithIcon>
       <div class="temp">
         <span class="temp__gradus">
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
 import CityElement from '@/UI/CityElement.vue';
 import WeatherByHour from './WeatherByHour.vue'
 export default {
@@ -29,20 +30,32 @@ export default {
     CityElement,
     WeatherByHour
   },
+  methods: {
+    ...mapActions(['getLocation', 'getWeather']),
+    ...mapMutations(['setDataLoaded']),
+    updateLocation() {
+      this.setDataLoaded(false)
+      console.log(this.dataisLoaded)
+      this.getLocation()
+        .then(() => this.getWeather())
+      // this.setDataLoaded(true)
+      // console.log(this.dataisLoaded)
+    }
+  },
   computed: {
-    ...mapGetters(['weatherData', 'forecastWeatherData', 'condition', 'currentDayName', 'weatherTime', 'weatherByHour']),
+    ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'condition', 'currentDayName', 'weatherTime', 'weatherByHour']),
 
     conditionText() {
       return this.weatherData.is_day === 1 ? this.condition.day : this.condition.night
     },
 
     findNextHour() {
-      
+
       return 's'
     },
   },
   mounted() {
-    
+
   }
 };
 </script>

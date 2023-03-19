@@ -27,4 +27,5 @@ export default {
 <style scoped lang="sass">
 div
     padding: 12px
+    justify-content: space-between
 </style>

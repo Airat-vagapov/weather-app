@@ -20,10 +20,4 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.ps 
-    height: 100vh
-.scrollContainer
-    overflow-y: hidden
-    height: 100%
-    justify-content: space-between
 </style>

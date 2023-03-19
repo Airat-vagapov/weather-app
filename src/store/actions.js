@@ -47,10 +47,10 @@ export default {
 
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
-        if (context.state.city === '' && context.state.country === '') {
+        // if (context.state.city === '' && context.state.country === '') {
           context.commit('setCity', city)
           context.commit('setCountry', country)
-        }
+        // }
 
         return axios.post("/api/v1/getWeatherCondition.php", {
           code: JSON.stringify({ conditionCode })
