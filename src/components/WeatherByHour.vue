@@ -1,11 +1,13 @@
 <template>
     <TheScroll>
-        <BaseCard :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
+        <BaseCard :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
 
             <span>{{ weather.time_hour }}</span>
-            <span>{{ weather.condition.text }}</span>
-            <i :class="weather.condition.iconName" class="wi condition__icon"></i>
-            <span>{{ weather.temp_c + " " + "C°" }}</span>
+            <div class="condition">
+                <i :class="weather.condition.iconName" class="wi condition__icon"></i>
+                <span>{{ weather.condition.text }}</span>
+            </div>
+            <span>{{ Math.round(weather.temp_c) + " " + "C°" }}</span>
         </BaseCard>
     </TheScroll>
 </template>
@@ -22,4 +24,8 @@ export default {
 </script>
 
 <style scoped lang="sass">
+.condition
+    display: flex
+    align-items: center
+    gap: 8px
 </style>
