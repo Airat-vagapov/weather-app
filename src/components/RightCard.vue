@@ -1,5 +1,16 @@
 <template>
     <BaseBigCard :width="70">
+        <BaseText>Today's highlights</BaseText>
+        <BaseCard :type="'row'">
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+        </BaseCard>
+        <BaseCard :type="'row'">
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+            <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span></BaseCard>
+        </BaseCard>
         <span>TEST</span>
         <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " + "C°" }}</span>
         <span>{{ 'Ветер' + ' ' + weatherData.wind_kph + " " + "км/ч" }}</span>

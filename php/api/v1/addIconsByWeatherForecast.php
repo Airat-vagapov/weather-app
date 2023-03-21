@@ -13,6 +13,7 @@ $arr = json_decode($iconsByCondition);
 for ($i = 0; $i < 24; $i++) {
 
     $code = $data[$i]->condition->code;
+    $isDay = $data[$i]->is_day;
 
     foreach ($arr as $elem) {
         $arr_code = $elem->code;
