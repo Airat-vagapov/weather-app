@@ -1,11 +1,12 @@
 <template>
-  <div v-if="dataisLoaded" class="main_container">
-    <BaseContainer>
-      <div class="flex__row">
-        <LeftCard></LeftCard>
-        <RightCard></RightCard>
-      </div>
-    </BaseContainer>
+  <!-- <div  class="main_container">
+    <BaseContainer> -->
+  <div v-if="dataisLoaded">
+    <div class="flex__row">
+      <LeftCard></LeftCard>
+      <RightCard></RightCard>
+    </div>
+    <!-- </BaseContainer> -->
     <CityChoose></CityChoose>
   </div>
   <LoadingPage :openLoader="true" v-else></LoadingPage>

@@ -1,5 +1,5 @@
 <template>
-  <BaseBigCard :width="30">
+  <BaseBigCard class="left__side" :width="30">
     <CityElement></CityElement>
     <BaseCard :type="'col'">
       <BaseTextWithIcon>
@@ -60,4 +60,5 @@ export default {
 
 <style scoped lang="sass">
 @import '../sass/components/leftCard.sass'
+
 </style>

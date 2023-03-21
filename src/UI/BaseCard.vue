@@ -16,6 +16,10 @@ export default {
             type: String,
             default: 'none',
             required: false
+        },
+        padding: {
+            type: String,
+            required: false
         }
     },
     computed: {
@@ -30,6 +34,10 @@ export default {
             if (this.border == 'bottom') {
                 classNames = classNames + ' ' + 'border__bottom'
             }
+
+            if (this.padding == 'none') {
+                classNames += ' ' + 'no__padding'
+            }
             console.log(classNames)
             return classNames
         }
@@ -43,6 +51,9 @@ export default {
 div
     padding: 12px
     justify-content: space-between
+
+.no__padding 
+    padding: 0
 
 .border__bottom
     border-bottom: 1px solid $gray-color
