@@ -13,7 +13,10 @@ export default {
 .icon__near
     font-size: 24px
     cursor: pointer
+    color: $dark-gray
+    transition: all 0.3s ease-in
     &:hover
+        transition: all 0.3s ease-in
         color: $blue-color
         
 </style>

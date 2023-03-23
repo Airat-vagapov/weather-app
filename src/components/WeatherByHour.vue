@@ -1,6 +1,6 @@
 <template>
     <TheScroll>
-        <BaseCard :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
+        <BaseCard class="scroll__byhour" :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
 
             <span>{{ weather.time_hour }}</span>
             <div class="condition">
@@ -24,8 +24,24 @@ export default {
 </script>
 
 <style scoped lang="sass">
+@import '@/sass/vars';
 .condition
     display: flex
     align-items: center
     gap: 8px
+
+.border__bottom
+    border-bottom: 1px solid $gray-color
+    cursor: pointer
+    transition: all 0.3s ease-in
+    &:hover
+        transition: all 0.3s ease-in
+        background-color: $gray-color
+        color: $blue-color
+    &:last-child
+        border-bottom: none
+
+.scroll__byhour
+    padding: 12px 0 
+    padding-right: 16px
 </style>

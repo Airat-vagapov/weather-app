@@ -1,7 +1,7 @@
 <template>
   <!-- <div  class="main_container">
     <BaseContainer> -->
-  <div v-if="dataisLoaded">
+  <div class="main__container" v-if="dataisLoaded">
     <div class="flex__row">
       <LeftCard></LeftCard>
       <RightCard></RightCard>

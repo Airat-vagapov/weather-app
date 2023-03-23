@@ -10,7 +10,7 @@ export default {
         type: {
             type: String,
             default: 'row',
-            required: true
+            required: false
         },
         border: {
             type: String,
@@ -19,6 +19,10 @@ export default {
         },
         padding: {
             type: String,
+            required: false
+        },
+        marginBot: {
+            type: Number,
             required: false
         }
     },
@@ -38,6 +42,9 @@ export default {
             if (this.padding == 'none') {
                 classNames += ' ' + 'no__padding'
             }
+            if (this.marginBot) {
+                classNames += ' ' + `mb${this.marginBot}`
+            }
             console.log(classNames)
             return classNames
         }
@@ -54,14 +61,4 @@ div
 
 .no__padding 
     padding: 0
-
-.border__bottom
-    border-bottom: 1px solid $gray-color
-    cursor: pointer
-    transition: all 0.3s ease-in
-    &:hover
-        transition: all 0.3s ease-in
-        background-color: $gray-color
-    &:last-child
-        border-bottom: none
 </style>

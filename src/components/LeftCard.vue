@@ -1,7 +1,7 @@
 <template>
   <BaseBigCard class="left__side" :width="30">
     <CityElement></CityElement>
-    <BaseCard :type="'col'">
+    <BaseCard :type="'col'" :padding="'none'" :marginBot="16">
       <BaseTextWithIcon>
         <i :class="currentIconName" class="wi condition__icon"></i>
         <span class="condition__text">{{ weatherData.condition.text }}</span>
@@ -9,8 +9,13 @@
       </BaseTextWithIcon>
       <div class="temp">
         <span class="temp__gradus">
-          {{ weatherData.temp_c + " " + "C°" }}
+          {{ Math.round(weatherData.temp_c) + " " + "C°" }}
         </span>
+        <div class="temp__details">
+          <BaseText>Feels {{ Math.round(weatherData.feelslike_c) + " " + "C°" }}</BaseText>
+          <BaseText>Cloud {{ weatherData.cloud + ' ' + "%" }} </BaseText>
+          <BaseText>Wind {{ weatherData.wind_kph + ' ' + 'km/h' }}</BaseText>
+        </div>
       </div>
       <div class="time">
         <span class="bold">{{ currentDayName }}</span>, <span>{{ weatherTime }}</span>
