@@ -2,39 +2,33 @@
     <BaseBigCard class="right__side" :width="70">
         <BaseText :size="24" :marginBot="24">Today's highlights</BaseText>
         <BaseCard class="today__block" :type="'row'" :padding="'none'">
-            <BaseCard :padding="'none'" class="today__card">
+            <BaseCard class="today__card">
                 <p>Chance of rain</p>
-                <BaseCard><span>{{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
-                    "%" }}</span></BaseCard>
+                <span>{{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
+                    "%" }}</span>
             </BaseCard>
-            <BaseCard :padding="'none'" class="today__card">
-                <BaseCard>
-                    Закат / рассвет
-                    <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                        "C°" }}</span>
-                </BaseCard>
+            <BaseCard class="today__card">
+                <span>{{ astroData }}</span>
             </BaseCard>
-            <BaseCard :padding="'none'" class="today__card">
-                <BaseCard>
-                    Max temp
-                    <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                        "C°" }}</span>
-                </BaseCard>
+            <BaseCard class="today__card">
+                <p>Max temp</p>
+                <span>{{ forecastWeatherData[0].day.maxtemp_c + " " +
+                    "C°" }}</span>
             </BaseCard>
-            <BaseCard :padding="'none'" class="today__card">
+            <BaseCard class="today__card">
                 Visible
-                <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
+                    "C°" }}</span>
             </BaseCard>
-            <BaseCard :padding="'none'" class="today__card">
+            <BaseCard class="today__card">
                 Влажность
-                <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
+                    "C°" }}</span>
             </BaseCard>
-            <BaseCard :padding="'none'" class="today__card">
+            <BaseCard class="today__card">
                 УФ
-                <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
+                    "C°" }}</span>
             </BaseCard>
         </BaseCard>
     </BaseBigCard>
@@ -44,7 +38,17 @@
 import { mapGetters } from 'vuex';
 export default {
     computed: {
-        ...mapGetters(['weatherData', 'forecastWeatherData'])
+        ...mapGetters(['weatherData', 'forecastWeatherData']),
+        astroData() {
+            let result
+
+            if (this.weatherData.is_day === 1) {
+                result = 'Sunset:' + ' ' + this.forecastWeatherData[0].astro.sunset
+            } else {
+                result = 'Sunrise:' + ' ' + this.forecastWeatherData[0].astro.sunrise
+            }
+            return result
+        },
     },
     mounted() {
         console.log(this.forecastWeatherData)
