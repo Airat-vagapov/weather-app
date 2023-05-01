@@ -45,7 +45,6 @@ export default {
             if (this.marginBot) {
                 classNames += ' ' + `mb${this.marginBot}`
             }
-            console.log(classNames)
             return classNames
         }
 

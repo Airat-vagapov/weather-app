@@ -3,21 +3,23 @@
         <BaseText :size="24" :marginBot="24">Today's highlights</BaseText>
         <BaseCard class="today__block" :type="'row'" :padding="'none'">
             <BaseCard :padding="'none'" class="today__card">
-                Chance of rain
-                <BaseCard><span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                <p>Chance of rain</p>
+                <BaseCard><span>{{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
+                    "%" }}</span></BaseCard>
             </BaseCard>
             <BaseCard :padding="'none'" class="today__card">
                 <BaseCard>
-                Закат / рассвет
-                <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                    Закат / рассвет
+                    <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
+                        "C°" }}</span>
+                </BaseCard>
             </BaseCard>
             <BaseCard :padding="'none'" class="today__card">
                 <BaseCard>
-                Max temp
-                <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
-                    "C°" }}</span></BaseCard>
+                    Max temp
+                    <span>{{ 'Ощущается как' + ' ' + weatherData.feelslike_c + " " +
+                        "C°" }}</span>
+                </BaseCard>
             </BaseCard>
             <BaseCard :padding="'none'" class="today__card">
                 Visible
@@ -42,7 +44,10 @@
 import { mapGetters } from 'vuex';
 export default {
     computed: {
-        ...mapGetters(['weatherData'])
+        ...mapGetters(['weatherData', 'forecastWeatherData'])
+    },
+    mounted() {
+        console.log(this.forecastWeatherData)
     }
 }
 </script>
