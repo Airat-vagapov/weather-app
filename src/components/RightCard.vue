@@ -1,18 +1,18 @@
 <template>
     <BaseBigCard class="right__side" :width="70">
         <BaseText :size="24" :marginBot="24">Today's highlights</BaseText>
-        <BaseCard class="today__block" :type="'row'" :padding="'none'">
-            <BaseCard class="today__card">
-                <p>Chance of rain</p>
-                <span>{{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
+        <BaseCard class="todayBlock" :type="'grid'" :column="3" :padding="'none'">
+            <BaseCard class="todayCard">
+                <span class="todayCard__value"> {{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
                     "%" }}</span>
+                <p>Chance of rain</p>
             </BaseCard>
             <BaseCard class="today__card">
                 <span>{{ astroData }}</span>
             </BaseCard>
             <BaseCard class="today__card">
-                <p>Max temp</p>
-                <span>{{ forecastWeatherData[0].day.maxtemp_c + " " +
+                <!-- <p></p> -->
+                <span>Maximal temperature {{ forecastWeatherData[0].day.maxtemp_c + " " +
                     "C°" }}</span>
             </BaseCard>
             <BaseCard class="today__card">
@@ -40,7 +40,7 @@ export default {
     computed: {
         ...mapGetters(['weatherData', 'forecastWeatherData']),
         astroData() {
-            let result
+            let result;
 
             if (this.weatherData.is_day === 1) {
                 result = 'Sunset:' + ' ' + this.forecastWeatherData[0].astro.sunset
