@@ -15,8 +15,8 @@
 <script>
 // import mitt from 'mitt'
 import { mapActions, mapGetters } from "vuex";
-import LeftCard from './components/LeftCard.vue'
-import RightCard from './components/RightCard.vue'
+import LeftCard from './modules/LeftCard.vue'
+import RightCard from './modules/RightCard.vue'
 import CityChoose from './modules/CityChoose.vue';
 
 export default {

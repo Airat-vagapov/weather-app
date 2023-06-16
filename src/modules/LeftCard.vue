@@ -29,7 +29,7 @@
 <script>
 import { mapActions, mapGetters, mapMutations } from 'vuex';
 import CityElement from '@/UI/CityElement.vue';
-import WeatherByHour from './WeatherByHour.vue'
+import WeatherByHour from '../components/WeatherByHour.vue'
 export default {
   components: {
     CityElement,
