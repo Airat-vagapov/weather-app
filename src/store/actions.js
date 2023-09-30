@@ -8,6 +8,10 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           const coordByLocation = position.coords.latitude + ',' + position.coords.longitude
+<<<<<<< HEAD
+=======
+          console.log(coordByLocation)
+>>>>>>> 177969e (update)
           resolve(context.commit('setcityCoordinates', coordByLocation))
         }, () => { resolve(context.dispatch('getLocationByIp')) })
       } else {
