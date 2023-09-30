@@ -1,41 +1,43 @@
 <template>
     <BaseBigCard class="right__side" :width="70">
         <TodayHighlights></TodayHighlights>
-        
+        <ForecastWeather></ForecastWeather>
     </BaseBigCard>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 import TodayHighlights from '@/components/TodayHighlights.vue';
+import ForecastWeather from '@/components/ForecastWeather.vue'
 export default {
     components: {
-        TodayHighlights
+        TodayHighlights,
+        ForecastWeather
     },
     computed: {
-        ...mapGetters(['weatherData', 'forecastWeatherData']),
-        astroData() {
-            let result;
+        // ...mapGetters(['weatherData', 'forecastWeatherData']),
+        // astroData() {
+        //     let result;
 
-            if (this.weatherData.is_day === 1) {
-                result = this.forecastWeatherData[0].astro.sunset
-            } else {
-                result = this.forecastWeatherData[0].astro.sunrise
-            }
-            return result
-        },
-        astroDataName() {
-            let astroName
-            if (this.weatherData.is_day === 1) {
-                astroName = 'Sunset'
-            } else {
-                astroName = 'Sunrise'
-            }
-            return astroName
-        }
+        //     if (this.weatherData.is_day === 1) {
+        //         result = this.forecastWeatherData[0].astro.sunset
+        //     } else {
+        //         result = this.forecastWeatherData[0].astro.sunrise
+        //     }
+        //     return result
+        // },
+        // astroDataName() {
+        //     let astroName
+        //     if (this.weatherData.is_day === 1) {
+        //         astroName = 'Sunset'
+        //     } else {
+        //         astroName = 'Sunrise'
+        //     }
+        //     return astroName
+        // }
     },
     mounted() {
-        console.log(this.forecastWeatherData)
+        // console.log(this.forecastWeatherData)
     }
 }
 </script>
