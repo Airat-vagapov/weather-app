@@ -1,5 +1,5 @@
 <template>
-    <BaseCard>
+    <BaseCard class="todayBlock">
         <BaseText :size="24" :marginBot="24">For next 2 days</BaseText>
         <BaseCard class="todayBlock" :type="'grid'" :padding="'none'">
             <BaseCard class="forecastCard">

@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export default {
   // Получение координат
   getLocation(context) {
@@ -8,10 +7,6 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           const coordByLocation = position.coords.latitude + ',' + position.coords.longitude
-<<<<<<< HEAD
-=======
-          console.log(coordByLocation)
->>>>>>> 177969e (update)
           resolve(context.commit('setcityCoordinates', coordByLocation))
         }, () => { resolve(context.dispatch('getLocationByIp')) })
       } else {
@@ -39,7 +34,7 @@ export default {
     const coordinates = context.getters.cityCoordinates
     await axios
       .get(
-        `http://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=5&alerts=yes&aqi=yes`
+        `https://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=5&alerts=yes&aqi=yes`
       )
       .then((response) => {
         const currentWeather = response.data.current;
@@ -52,7 +47,7 @@ export default {
         const city = location.name
         const country = location.country
 
-
+        console.log(forecastWeather)
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
         // if (context.state.city === '' && context.state.country === '') {
