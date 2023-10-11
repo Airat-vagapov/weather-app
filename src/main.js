@@ -4,6 +4,7 @@ import App from '@/App.vue'
 import store from './store/index.js'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import VueSlickCarousel from 'vue-slick-carousel'
 
 import LoadingPage from "@/layouts/LoadingPage.vue"
 import SideModalLoader from '@/layouts/LoadingPage.vue'
@@ -23,6 +24,7 @@ const app = createApp(App)
 app.use(store)
 app.use(VueAxios, axios)
 app.provide('axios', app.config.globalProperties.axios)
+app.use(VueSlickCarousel)
 
 app.component('BaseContainer', BaseContainer);
 app.component('BaseTextWithIcon', BaseTextWithIcon);
@@ -34,6 +36,8 @@ app.component('BaseInput', BaseInput);
 app.component('LoadingPage', LoadingPage);
 app.component('SideModalLoader', SideModalLoader);
 app.component('SideModal', SideModal);
+// app.component('VueSlickCarousel', VueSlickCarousel)
+
 
 
 
