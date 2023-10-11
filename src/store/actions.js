@@ -39,7 +39,8 @@ export default {
       .then((response) => {
         const currentWeather = response.data.current;
         const location = response.data.location;
-        const forecastWeather = response.data.forecast.forecastday
+        let forecastWeather = response.data.forecast.forecastday
+        forecastWeather.shift();
 
         const conditionCode = currentWeather.condition.code;
         const is_day = currentWeather.is_day;
@@ -47,7 +48,6 @@ export default {
         const city = location.name
         const country = location.country
 
-        console.log(forecastWeather)
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
         // if (context.state.city === '' && context.state.country === '') {

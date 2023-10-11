@@ -9,9 +9,7 @@ div
     display: flex
     justify-content: flex-start
     align-items: center
-
-img
-    margin-right: 8px
+    gap: 8px
 
 span
     font-size: 12px
