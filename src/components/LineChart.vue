@@ -1,5 +1,5 @@
 <template>
-    <Line :data="chartData" :options="chartConfig"></Line>
+    <Line :data="chartData" :options="chartConfig" :style="chartStyles"></Line>
 </template>
 
 <script>
@@ -30,9 +30,24 @@ export default {
     props: ['data'],
     computed: {
         chartData() {
-            console.log(this.data)
-            let chartData = {
+            let labels = []
+            let temp = []
+            this.data.forEach(element => {
+                let time = element.time
+                labels.push(time)
 
+                let tempValue = element.temp_c
+                temp.push(tempValue)
+            });
+
+
+            let chartData = {
+                labels: labels,
+                datasets: [{
+                    label: 'Data One',
+                    backgroundColor: '#f87979',
+                    data: temp,
+                }],
             }
             return chartData
         },
@@ -41,11 +56,15 @@ export default {
                 type: 'line'
             }
             return chartConfig
+        },
+
+        chartStyles() {
+            let styles = {
+                height: '200px',
+            }
+            return styles
         }
 
-    },
-    mounted() {
-        console.log(this.data)
     },
 }
 </script>
