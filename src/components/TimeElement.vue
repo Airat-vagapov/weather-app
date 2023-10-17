@@ -1,6 +1,6 @@
 <template>
     <div class="time">
-        <span class="bold" v-if="showDate">{{ currentDayName }}</span>, <span v-if="showTime">{{ weatherTime }}</span>
+        <span class="bold" v-if="showDayName">{{ currentDayName }}</span> <span v-if="showTime">, {{ weatherTime }}</span>
     </div>
 </template>
 
@@ -8,10 +8,13 @@
 import { mapGetters } from 'vuex';
 export default {
     props: {
-        showDate: {
+        showDayName: {
             default: true
         },
         showTime: {
+            default: true
+        },
+        showDate: {
             default: true
         }
     },
@@ -20,3 +23,7 @@ export default {
     },
 }
 </script>
+<style scoped lang="sass">
+.time 
+    display: flex
+</style>
