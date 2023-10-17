@@ -185,5 +185,13 @@ export default {
       })
   },
 
+  async getWeatherIcon(code, isDay) {
+    const data = { code, isDay }
+    return axios.post("/api/v1/getWeatherIcon.php",
+      JSON.stringify(
+        data
+      ),)
+  }
+
 };
 

@@ -5,8 +5,10 @@
         <Carousel>
             <Slide v-for="(weather, index ) in this.forecastWeatherData" :key="index">
                 <BaseCard class="todayBlock" :type="'grid'" :padding="'32'">
-                    <TimeElement :showTime="false" :showDate="true"></TimeElement>
-                    <BigTemperatireElement :temp="weather.day.avgtemp_c"></BigTemperatireElement>
+                    <TimeElement :showTime="false" :showDate="true" :showDayAndMonth="true" :dateType="'custom'"
+                        :dateData="weather.date">
+                    </TimeElement>
+                    <BigTemperatireElement :showCondition="true" :temp="weather.day.avgtemp_c"></BigTemperatireElement>
                     <ConditionElement :hasLocationButton="false"></ConditionElement>
                     <!-- <LineChart :data="weather.hour"></LineChart> -->
                 </BaseCard>
@@ -37,7 +39,13 @@ export default {
         },
     },
     mounted() {
+        // const weatherData = this.forecastWeatherData
+
+        // weatherData.forEach((elem) => {
+        //     console.log(elem)
+        // })
         console.log(this.forecastWeatherData);
+
     },
 }
 </script>

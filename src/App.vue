@@ -40,6 +40,7 @@ export default {
   },
   mounted() {
     this.timeUpdateInterval = setInterval(this.getTime, 1000)
+    
   },
   beforeUnmount() {
     clearInterval(this.timeUpdateInterval);
