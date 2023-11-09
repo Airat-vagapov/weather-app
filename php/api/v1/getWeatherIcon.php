@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // $translateData = file_get_contents('../conditions.json');
-$iconsByCondition = file_get_contents(('../icons-by-condition.json'));
+// $iconsByCondition = file_get_contents(('../icons-by-condition.json'));
+$iconsByCondition = file_get_contents(('/weather-app/icons-by-condition.json'));
 
 $arr = json_decode($iconsByCondition);
 
