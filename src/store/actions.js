@@ -55,7 +55,8 @@ export default {
         context.commit('setCountry', country)
         // }
 
-        return axios.post("/api/v1/getWeatherIcon.php",
+        // return axios.post("/api/v1/getWeatherIcon.php",
+        return axios.post("https://weather-app-3b283.web.app/php/api/v1/getWeatherIcon.php",
           JSON.stringify({
             code: conditionCode,
             isDay: is_day
@@ -160,7 +161,8 @@ export default {
     })
 
     // Добавялем иконки относительно погоды
-    await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
+    // await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
+    await axios.post("https://weather-app-3b283.web.app/php/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
       .then((res) => {
         context.commit('setWeatherByHour', res.data)
       })

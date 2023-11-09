@@ -1,12 +1,12 @@
 
 module.exports = {
   transpileDependencies: true,
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8888',
-        changeOrigin: true, // so CORS doesn't bite us. 
-      }
-    }
-  }
+  // devServer: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://weather-app-3b283.appspot.com/php',
+  //       changeOrigin: true, // so CORS doesn't bite us. 
+  //     }
+  //   }
+  // }
 }
