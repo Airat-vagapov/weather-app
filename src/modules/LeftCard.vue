@@ -4,7 +4,7 @@
     <BaseCard :type="'col'" :padding="'none'" :marginBot="16">
       <ConditionElement></ConditionElement>
       <BigTemperatireElement :temp="currentTemp"></BigTemperatireElement>
-      <TimeElement></TimeElement>
+      <TimeElement :showDayName="true"></TimeElement>
     </BaseCard>
 
     <WeatherByHour></WeatherByHour>

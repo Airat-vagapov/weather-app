@@ -1,6 +1,7 @@
 <template>
     <TheScroll>
-        <BaseCard class="scroll__byhour" :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour" :key="index">
+        <BaseCard class="scroll__byhour" :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour"
+            :key="index">
 
             <span>{{ weather.time_hour }}</span>
             <div class="condition">
@@ -16,10 +17,10 @@
 import TheScroll from '@/UI/TheScroll.vue';
 import { mapGetters } from 'vuex';
 export default {
+    components: { TheScroll },
     computed: {
         ...mapGetters(["weatherByHour"])
     },
-    components: { TheScroll }
 }
 </script>
 

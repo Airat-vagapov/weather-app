@@ -1,9 +1,12 @@
 <template>
     <div class="temp">
-        <span class="temp__gradus">
-            {{ Math.round(this.temp) + " " + "C°" }}
-            <!-- {{ Math.round(weatherData.temp_c) + " " + "C°" }} -->
-        </span>
+        <div class="temp--big">
+            <!-- <span v-if="showCondition" :class="currentIconName" class="temp__condition"></span> -->
+            <span v-if="showCondition" :class="currentIconName" class="wi condition__icon"></span>
+            <span class="temp__gradus">
+                {{ Math.round(this.temp) + " " + "C°" }}
+            </span>
+        </div>
         <div class="temp__details" v-if="showDetails">
             <BaseText>Feels {{ Math.round(weatherData.feelslike_c) + " " + "C°" }}</BaseText>
             <BaseText>Cloud {{ weatherData.cloud + ' ' + "%" }} </BaseText>
@@ -23,6 +26,9 @@ export default {
         showDetails: {
             required: false,
             default: true
+        },
+        showCondition: {
+            default: false
         }
     },
     methods: {
@@ -36,4 +42,13 @@ export default {
 
 <style scoped lang="sass">
 @import '../sass/components/leftCard.sass'
+
+.temp--big 
+    display: flex
+    align-items: flex-start
+.temp--big .condition__icon 
+    font-size: 46px
+    position: relative 
+    top: 40px
+    margin-right: 16px
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="condition">
         <BaseTextWithIcon>
-            <i :class="currentIconName" class="wi condition__icon"></i>
+            <i v-if="showIcon" :class="currentIconName" class="wi condition__icon"></i>
             <span class="condition__text">{{ weatherData.condition.text }}</span>
         </BaseTextWithIcon>
         <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'" v-if="showLocationButton"></BaseIcon>
@@ -14,7 +14,12 @@ export default {
     props: {
         hasLocationButton: {
             type: Boolean,
-            default: true
+            default: true,
+        },
+        showIcon: {
+            type: Boolean,
+            required: false,
+            default: true,
         }
     },
     computed: {
@@ -32,7 +37,6 @@ export default {
 
         updateLocation() {
             this.setDataLoaded(false)
-            console.log(this.getLocation())
             this.getLocation()
                 .then(() => this.getWeather())
                 .then(() => this.getActualForecastByHour())
