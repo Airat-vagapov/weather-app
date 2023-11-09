@@ -8,8 +8,8 @@
                     <TimeElement :showTime="false" :showDate="true" :showDayAndMonth="true" :dateType="'custom'"
                         :dateData="weather.date">
                     </TimeElement>
-                    <BigTemperatireElement :showCondition="true" :temp="weather.day.avgtemp_c"></BigTemperatireElement>
-                    <ConditionElement :hasLocationButton="false"></ConditionElement>
+                    <BigTemperatireElement :showCondition="true" :showDetails="false" :temp="weather.day.avgtemp_c"></BigTemperatireElement>
+                    <ConditionElement :hasLocationButton="false" :showIcon="false"></ConditionElement>
                     <!-- <LineChart :data="weather.hour"></LineChart> -->
                 </BaseCard>
             </Slide>
@@ -28,7 +28,6 @@ import 'vue3-carousel/dist/carousel.css'
 
 export default {
     components: { BigTemperatireElement, TimeElement, ConditionElement, Carousel, Slide },
-    // components: { VueSlickCarousel },
 
 
     computed: {
@@ -39,13 +38,7 @@ export default {
         },
     },
     mounted() {
-        // const weatherData = this.forecastWeatherData
-
-        // weatherData.forEach((elem) => {
-        //     console.log(elem)
-        // })
         console.log(this.forecastWeatherData);
-
     },
 }
 </script>
