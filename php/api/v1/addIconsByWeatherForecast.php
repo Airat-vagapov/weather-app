@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = json_decode($json);
 }
 
-$iconsByCondition = file_get_contents(('../icons-by-condition.json'));
+$iconsByCondition = file_get_contents(('/weather-app/icons-by-condition.json'));
 
 $arr = json_decode($iconsByCondition);
 
