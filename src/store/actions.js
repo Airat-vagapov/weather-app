@@ -16,7 +16,7 @@ export default {
   },
 
   async getLocationByIp(context) {
-    await axios.get('/api/v1/getLocation.php')
+    await axios.get('https://dev-vagapov.ru/weather-app/api/v1/getLocation.php')
       .then((response) => {
         const city = response.data.city;
         const country = response.data.country_name;
@@ -173,7 +173,7 @@ export default {
     let dataIsLoading = context.state.cityIsLoading
     dataIsLoading = true;
     context.commit('setCityIsLoading', dataIsLoading)
-    await axios.post('api/v1/getCity.php', {
+    await axios.post('https://dev-vagapov.ru/weather-app/api/v1/getCity.php', {
       city: JSON.stringify(city)
     })
       .then((res) => {
@@ -189,7 +189,7 @@ export default {
 
   async getWeatherIcon(code, isDay) {
     const data = { code, isDay }
-    return axios.post("/api/v1/getWeatherIcon.php",
+    return axios.post("https://dev-vagapov.ru/weather-app/api/v1/getWeatherIcon.php",
       JSON.stringify(
         data
       ),)
