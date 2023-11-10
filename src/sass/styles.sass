@@ -21,8 +21,14 @@ select
     font-family: 'Lato', sans-serif
     font-size: 16px
 
+.h100
+    height: 100%
+
 .flex__row
     display: flex
+
+.flex__row--centerVert 
+    align-items: center
 
 .flex__col
     display: flex
@@ -30,6 +36,12 @@ select
 
 .grid
     display: grid
+
+.grid__elem
+    grid-column: span 1
+
+.grid__elem--2 
+    grid-column: span 2
 
 .grid__col--2
     grid-template-columns: repeat(2, 1fr)
@@ -60,7 +72,7 @@ select
 .bold
     font-weight: 900
 
-.custom-arrow 
+.custom-arrow
     background-color: red
     width: 10px
-    height: 10px    
+    height: 10px
