@@ -6,8 +6,17 @@
 
 <script>
 export default {
-    props: ['marginBot', 'size']
-}
+    props: ['marginBot', 'size'],
+    computed: {
+        classNames() {
+            let className = ''
+            if(this.size && this.marginBot) {
+                className+= this.size + this.marginBot
+            }
+            return className
+        }
+    }
+}   
 </script>
 
 <style scoped lang="sass">

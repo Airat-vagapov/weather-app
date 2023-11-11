@@ -122,4 +122,9 @@ export default {
   background-color: none
   opacity: 1
 
+// Для списка городов
+@media (max-width: 1199px)
+    .cityList
+        .scrollContainer
+            flex-direction: column
 </style>
