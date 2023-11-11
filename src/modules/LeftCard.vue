@@ -19,6 +19,8 @@
     </BaseCard>
 
     <WeatherByHour></WeatherByHour>
+
+    <TodayHighlights v-if="this.deviceType === 'tablet' || this.deviceType === 'mobile'"></TodayHighlights>
   </BaseBigCard>
 </template>
 
@@ -29,13 +31,15 @@ import WeatherByHour from '../components/WeatherByHour.vue';
 import TimeElement from '../components/TimeElement.vue';
 import ConditionElement from '@/components/ConditionElement.vue';
 import BigTemperatireElement from '@/components/BigTemperatireElement.vue';
+import TodayHighlights from '@/components/TodayHighlights.vue';
 export default {
   components: {
     CityElement,
     WeatherByHour,
     TimeElement,
     ConditionElement,
-    BigTemperatireElement
+    BigTemperatireElement,
+    TodayHighlights
   },
   computed: {
     ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'currentIconName', 'currentDayName', 'weatherTime', 'weatherByHour', 'deviceType']),

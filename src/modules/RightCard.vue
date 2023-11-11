@@ -1,14 +1,12 @@
 <template>
     <BaseBigCard class="right__side" :width="70">
-        <div>
-            <TodayHighlights></TodayHighlights>
-        </div>
+        <TodayHighlights v-if="this.deviceType === 'desktop'" :showTitle="true"></TodayHighlights>
         <ForecastWeather></ForecastWeather>
     </BaseBigCard>
 </template>
 
 <script>
-// import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 import TodayHighlights from '@/components/TodayHighlights.vue';
 import ForecastWeather from '@/components/ForecastWeather.vue'
 export default {
@@ -17,7 +15,7 @@ export default {
         ForecastWeather
     },
     computed: {
-        // ...mapGetters(['weatherData', 'forecastWeatherData']),
+        ...mapGetters(['deviceType']),
         // astroData() {
         //     let result;
 

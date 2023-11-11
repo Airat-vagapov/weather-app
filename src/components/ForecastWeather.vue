@@ -4,7 +4,7 @@
         <!-- <div class="slider"> -->
         <Carousel>
             <Slide v-for="(weather, index ) in this.forecastWeatherData" :key="index">
-                <BaseCard class="todayBlock" :type="'grid'" :column="3" :padding="'32'">
+                <BaseCard class="forecastCard--main" :type="'grid'" :column="3" :padding="'32'">
                     <div class="grid__elem">
                         <TimeElement :showTime="false" :showDate="true" :showDayAndMonth="true" :dateType="'custom'"
                             :dateData="weather.date">
@@ -54,7 +54,7 @@ export default {
 <style scoped lang="sass">
 @import '@/sass/components/rightCard'
 
-.todayBlock
+.forecastCard--main
     padding: 32px
     background-color: #fff
     border-radius: 12px

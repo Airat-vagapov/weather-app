@@ -3,6 +3,9 @@
     background-color: $white-color
     border-radius: 0 24px 24px 0
     position: relative
+    @media (max-width:1199px)
+        border-radius: 0
+        
     &:before  
        content: ''
        position: absolute 
@@ -12,6 +15,10 @@
        margin: auto 0
        box-shadow: 10px 0px 20px 0px rgba(0,0,0,0.35)
        width: 1px
+    .scrollFade
+        margin-bottom: 24px
+    .todayBlock 
+        margin-bottom: 0 !important
 .temp
     display: flex
     align-items: center

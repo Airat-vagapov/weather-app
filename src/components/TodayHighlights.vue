@@ -1,6 +1,6 @@
 <template>
-    <BaseText :size="24" :marginBot="24">Today's highlights</BaseText>
-    <BaseCard class="todayBlock" :type="'grid'" :column="3" :padding="'none'" :marginBot="32">
+    <BaseText :size="24" :marginBot="24" v-if="showTitle">Today's highlights</BaseText>
+    <BaseCard class="todayBlock" :type="'grid'" :column="3" :padding="'none'">
         <BaseCard class="todayCard">
             <span class="todayCard__value"> {{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
                 "%" }}</span>
@@ -23,7 +23,7 @@
             <span class="todayCard__value">{{ forecastWeatherData[0].day.uv }}</span>
             <p class="todayCard__text">UV</p>
         </BaseCard>
-        <BaseCard class="todayCard">
+        <BaseCard class="todayCard" v-if="this.deviceType != 'tablet'">
             <span class="todayCard__value">{{ forecastWeatherData[0].day.avgvis_km + " " +
                 "km" }}</span>
             <p class="todayCard__text">Visible</p>
@@ -33,6 +33,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
+    props: ['showTitle'],
     computed: {
         ...mapGetters(['weatherData', 'forecastWeatherData']),
         astroData() {

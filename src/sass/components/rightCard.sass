@@ -10,8 +10,17 @@
 .todayBlock
     flex-wrap: wrap
     gap: 24px
+    margin-bottom: 32px
+    @media (max-width: 1199px) 
+        margin-bottom: 24px
+    @media (max-width: 767px) 
+        margin-bottom: 24px
     &.grid__col--3
-        grid-template-columns: repeat(6,1fr)
+        grid-template-columns: repeat(3,1fr)
+        @media (max-width: 1199px)
+            grid-template-columns: repeat(5,1fr)
+        @media (max-width: 767px)
+            grid-template-columns: repeat(2,1fr)
 .todayCard
     display: flex
     flex-direction: column
@@ -30,7 +39,7 @@
         @media (max-width:1199px)
             font-size: 16px
         @media (max-width:767px)
-            font-size: 24px
+            font-size: 20px
     &__text
         font-size: 32px
         @media (max-width: 1199px)
