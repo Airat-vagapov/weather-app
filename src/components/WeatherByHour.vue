@@ -1,12 +1,12 @@
 <template>
     <TheScroll>
-        <BaseCard class="scroll__byhour" :border="'bottom'" :type="'row'" v-for="(weather, index) in weatherByHour"
+        <BaseCard class="scrollByhour" :border="'bottom'" v-for="(weather, index) in weatherByHour"
             :key="index">
 
-            <span>{{ weather.time_hour }}</span>
+            <span class="scrollByhour__timeText">{{ weather.time_hour }}</span>
             <div class="condition">
                 <i :class="weather.condition.iconName" class="wi condition__icon"></i>
-                <span>{{ weather.condition.text }}</span>
+                <span class="condition__text">{{ weather.condition.text }}</span>
             </div>
             <span>{{ Math.round(weather.temp_c) + " " + "C°" }}</span>
         </BaseCard>
@@ -42,7 +42,27 @@ export default {
     &:last-child
         border-bottom: none
 
-.scroll__byhour
+.scrollByhour
+    display: flex
+    flex-direction: row
     padding: 12px 0 
     padding-right: 16px
+    @media (max-width: 1199px) 
+        flex-direction: column
+        padding: 12px 24px
+        width: fit-content
+        align-items: center
+        gap: 12px
+    &:first-child
+        padding-left: 0
+    &:last-child
+        padding-right: 0
+    .scrollByhour__timeText 
+        white-space: nowrap
+    .condition 
+        @media (max-width: 1999px) 
+            flex-direction: column
+        .condition__text 
+            text-align: center
+            display: none
 </style>

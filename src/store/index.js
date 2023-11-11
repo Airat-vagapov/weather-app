@@ -25,7 +25,7 @@ const store = createStore({
             cityChoose: false,
             cityList: [],
             cityIsLoading: false,
-            
+            deviceType:'',
         }
     },
     actions,

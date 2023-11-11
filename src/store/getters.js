@@ -46,5 +46,8 @@ export default {
     },
     cityCoordinates(state) {
         return state.cityCoordinates
+    },
+    deviceType(state) {
+        return state.deviceType
     }
 }

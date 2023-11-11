@@ -1,6 +1,19 @@
 import axios from 'axios';
 
 export default {
+  // Определяем тип устройства
+  detectDevice(context) {
+    if (window.innerWidth > 1199) {
+      // return 'desktop'
+      context.commit('setDeviceType', 'desktop')
+    }
+    if (window.innerWidth < 1200 && window.innerWidth > 767) {
+      context.commit('setDeviceType', 'tablet')
+    }
+    if (window.innerWidth < 768) {
+      context.commit('setDeviceType', 'mobile')
+    }
+  },
   // Получение координат
   getLocation(context) {
     return new Promise((resolve, reject) => {
@@ -187,6 +200,7 @@ export default {
       })
   },
 
+  // Получаем иконку для погоды
   async getWeatherIcon(code, isDay) {
     const data = { code, isDay }
     return axios.post("https://dev-vagapov.ru/weather-app/api/v1/getWeatherIcon.php",

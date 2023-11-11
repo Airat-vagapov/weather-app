@@ -1,5 +1,16 @@
 <template>
-  <BaseBigCard class="left__side" :width="30">
+  <BaseBigCard class="left__side" :width="30" v-if="this.deviceType === 'desktop'">
+    <CityElement></CityElement>
+    <BaseCard :type="'col'" :padding="'none'" :marginBot="16">
+      <ConditionElement></ConditionElement>
+      <BigTemperatireElement :temp="currentTemp"></BigTemperatireElement>
+      <TimeElement :showDayName="true"></TimeElement>
+    </BaseCard>
+
+    <WeatherByHour></WeatherByHour>
+  </BaseBigCard>
+
+  <BaseBigCard class="left__side" v-if="this.deviceType === 'tablet' || this.deviceType === 'mobile'">
     <CityElement></CityElement>
     <BaseCard :type="'col'" :padding="'none'" :marginBot="16">
       <ConditionElement></ConditionElement>
@@ -27,7 +38,7 @@ export default {
     BigTemperatireElement
   },
   computed: {
-    ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'currentIconName', 'currentDayName', 'weatherTime', 'weatherByHour']),
+    ...mapGetters(['dataisLoaded', 'weatherData', 'forecastWeatherData', 'currentIconName', 'currentDayName', 'weatherTime', 'weatherByHour', 'deviceType']),
 
     conditionText() {
       return this.weatherData.is_day === 1 ? this.condition.day : this.condition.night
