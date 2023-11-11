@@ -27,7 +27,7 @@ export default {
     CityChoose,
   },
   computed: {
-    ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose', 'cityCoordinates'])
+    ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose', 'cityCoordinates', 'deviceType'])
   },
   methods: {
     ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour', 'detectDevice']),
