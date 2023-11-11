@@ -1,6 +1,8 @@
 <template>
     <BaseBigCard class="right__side" :width="70">
-        <TodayHighlights></TodayHighlights>
+        <div>
+            <TodayHighlights></TodayHighlights>
+        </div>
         <ForecastWeather></ForecastWeather>
     </BaseBigCard>
 </template>

@@ -1,9 +1,10 @@
 <template>
-    <SideModal :error="emptyCityList" :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal">
+    <SideModal :error="emptyCityList" :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal"
+        data-moadal="cityChose">
         <template v-slot:content>
-            <BaseText>
-                <h2>Choose the City</h2>
-            </BaseText>
+
+            <h2 class="modal__title">Choose the City</h2>
+
             <BaseIcon @click="closeModal" class="city__modal__icon" :icon="'close'"></BaseIcon>
             <div style="display: flex; flex-wrap: wrap; position: relative; margin-bottom: 32px;">
                 <BaseInput :valid="isValid" :value="cityName" @new-value="newValue => cityName = newValue"
@@ -11,13 +12,13 @@
                 </BaseInput>
                 <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
             </div>
-            
-                <TheScroll v-if="!emptyCityList">
-                    <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
-                        v-for="(elem, index) in cityList" :key="index">
-                        <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
-                    </div>
-                </TheScroll>
+
+            <TheScroll v-if="!emptyCityList" class="cityList">
+                <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
+                    v-for="(elem, index) in cityList" :key="index">
+                    <BaseText>{{ elem.city }}, {{ elem.country }}</BaseText>
+                </div>
+            </TheScroll>
 
 
         </template>

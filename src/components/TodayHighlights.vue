@@ -4,29 +4,29 @@
         <BaseCard class="todayCard">
             <span class="todayCard__value"> {{ forecastWeatherData[0].day.daily_chance_of_rain + " " +
                 "%" }}</span>
-            <p>Chance of rain</p>
+            <p class="todayCard__text">Chance of rain</p>
         </BaseCard>
         <BaseCard class="todayCard">
             <span class="todayCard__value">{{ astroData }}</span>
-            <p>{{ astroDataName }}</p>
+            <p class="todayCard__text">{{ astroDataName }}</p>
         </BaseCard>
         <BaseCard class="todayCard">
             <span class="todayCard__value"> {{ forecastWeatherData[0].day.maxtemp_c + " " +
                 "C°" }}</span>
-            <p>Max temperature</p>
+            <p class="todayCard__text">Max temp</p>
         </BaseCard>
         <BaseCard class="todayCard">
             <span class="todayCard__value">{{ forecastWeatherData[0].day.avghumidity + ' ' + '%' }}</span>
-            <p>Average humidity</p>
+            <p class="todayCard__text">Humidity</p>
         </BaseCard>
         <BaseCard class="todayCard">
             <span class="todayCard__value">{{ forecastWeatherData[0].day.uv }}</span>
-            <p>UV</p>
+            <p class="todayCard__text">UV</p>
         </BaseCard>
         <BaseCard class="todayCard">
             <span class="todayCard__value">{{ forecastWeatherData[0].day.avgvis_km + " " +
                 "km" }}</span>
-            <p>Average visible</p>
+            <p class="todayCard__text">Visible</p>
         </BaseCard>
     </BaseCard>
 </template>
