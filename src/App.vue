@@ -1,15 +1,16 @@
 <template>
-  <!-- <div  class="main_container">
-    <BaseContainer> -->
   <div class="main__container" v-if="dataisLoaded">
-    <div class="flex__row">
+    <div class="main">
       <LeftCard></LeftCard>
       <RightCard></RightCard>
     </div>
-    <!-- </BaseContainer> -->
     <CityChoose></CityChoose>
   </div>
-  <LoadingPage :openLoader="true" v-else></LoadingPage>
+
+  <!-- <div class="main__container" v-if="dataisLoaded && this.deviceType === 'tablet'">
+
+  </div> -->
+  <LoadingPage :openLoader="true" v-if="!dataisLoaded"></LoadingPage>
 </template>
 
 <script>
@@ -29,10 +30,13 @@ export default {
     ...mapGetters(['dataisLoaded', 'backImgUrl', 'cityChoose', 'cityCoordinates'])
   },
   methods: {
-    ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour']),
+    ...mapActions(['getLocation', 'getWeather', 'getBackPhoto', 'getForecastWeather', 'getDayName', 'getActualForecastByHour', 'detectDevice']),
   },
   created() {
-    // this.$emmiter = mitt()
+    // Определяем устройство
+    this.detectDevice()
+
+    // Получаем данные
     this.getLocation()
       .then(() => this.getWeather())
       .then(() => this.getActualForecastByHour())
@@ -40,7 +44,9 @@ export default {
   },
   mounted() {
     this.timeUpdateInterval = setInterval(this.getTime, 1000)
-    
+    console.log(this.deviceType)
+
+
   },
   beforeUnmount() {
     clearInterval(this.timeUpdateInterval);

@@ -9,7 +9,7 @@ export default {
     props: {
         type: {
             type: String,
-            default: 'row',
+            // default: 'row',
             required: false
         },
         border: {
@@ -33,7 +33,7 @@ export default {
     },
     computed: {
         typeClass() {
-            let classNames;
+            let classNames = '';
             // Тип блока 
             if (this.type === 'row') {
                 classNames = 'flex__row'
@@ -60,6 +60,7 @@ export default {
             if (this.marginBot) {
                 classNames += ' ' + `mb${this.marginBot}`
             }
+            
             return classNames
         }
 

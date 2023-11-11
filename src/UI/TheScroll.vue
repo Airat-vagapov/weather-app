@@ -1,6 +1,6 @@
 <template>
     <div class="scrollFade">
-        <PerfectScrollbar :style="{ height: scrollHeight + 'px' }" :settings="scrollbarSettings">
+        <PerfectScrollbar :style="{ height: scrollHeight }" :settings="scrollbarSettings">
             <div class="scrollContainer">
                 <slot></slot>
             </div>
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
 export default {
     data() {
@@ -23,15 +24,22 @@ export default {
         }
     },
     components: { PerfectScrollbar },
+    computed: {
+        ...mapGetters(['deviceType']),
+    },
     methods: {
         getScrollHeight() {
-            const scroll = document.querySelectorAll('.ps')
-            scroll.forEach(elem => {
-                const scrollY = elem.getBoundingClientRect().top
-                const windowHeight = window.innerHeight
-                const height = windowHeight - scrollY - 32
-                this.scrollHeight = height
-            })
+            if (this.deviceType === 'desktop') {
+                const scroll = document.querySelectorAll('.ps')
+                scroll.forEach(elem => {
+                    const scrollY = elem.getBoundingClientRect().top
+                    const windowHeight = window.innerHeight
+                    const height = windowHeight - scrollY - 32
+                    this.scrollHeight = height + 'px'
+                })
+            } else {
+                this.scrollHeight = 100 + '%'
+            }
         }
     },
     mounted() {
@@ -45,26 +53,32 @@ export default {
 @import '@/sass/vars'
 
 .scrollFade
-    position: relative
-    &::before
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        width: calc(100% - 4px)
-        height: 20px
-        background: linear-gradient(0deg, rgba(0,0,0,0) 0%, white 100%)
-        z-index: 10
-    &::after
-        content: ''
-        position: absolute
-        bottom: 0
-        left: 0
-        width: calc(100% - 4px)
-        height: 20px
-        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, white 100%)
-        z-index: 10
+    @media (min-width: 1199px) 
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            top: 0
+            left: 0
+            width: calc(100% - 4px)
+            height: 20px
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, white 100%)
+            z-index: 10
+        &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 0
+            width: calc(100% - 4px)
+            height: 20px
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, white 100%)
+            z-index: 10
         
+
+.scrollContainer 
+    @media (max-width: 1199px) 
+        display: flex
+
 .ps
     z-index: 5
 
@@ -72,14 +86,24 @@ export default {
     background-color: $blue-color
     width: 2px
 
+.ps__thumb-x
+    background-color: $blue-color
+    height: 2px
+
 .ps__rail-y:hover > .ps__thumb-y,
 .ps__rail-y:focus > .ps__thumb-y,
-.ps__rail-y.ps--clicking .ps__thumb-y 
+.ps__rail-y.ps--clicking .ps__thumb-y
     background-color: #4150d3
     width: 4px
 
 .ps__rail-y
     width: 8px
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x 
+    background-color: #4150d3
+    height: 4px
 
 .ps:hover > .ps__rail-x,
 .ps:hover > .ps__rail-y,

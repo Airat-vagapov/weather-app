@@ -46,5 +46,8 @@ export default {
     },
     setCityIsLoading(state, payload) {
         state.cityIsLoading = payload
+    },
+    setDeviceType (state, payload) {
+        state.deviceType = payload
     }
 }

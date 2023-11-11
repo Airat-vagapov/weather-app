@@ -27,7 +27,7 @@ select
 .flex__row
     display: flex
 
-.flex__row--centerVert 
+.flex__row--centerVert
     align-items: center
 
 .flex__col
@@ -40,7 +40,7 @@ select
 .grid__elem
     grid-column: span 1
 
-.grid__elem--2 
+.grid__elem--2
     grid-column: span 2
 
 .grid__col--2
@@ -76,3 +76,8 @@ select
     background-color: red
     width: 10px
     height: 10px
+
+.main
+    display: flex
+    @media (max-width: 1199px)
+        flex-direction: column
