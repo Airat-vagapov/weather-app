@@ -50,6 +50,7 @@ export default {
         `https://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=5&alerts=yes&aqi=yes`
       )
       .then((response) => {
+        console.log(response.data)
         const currentWeather = response.data.current;
         const location = response.data.location;
         let forecastWeather = response.data.forecast.forecastday
@@ -148,7 +149,7 @@ export default {
     const dayDataByHour = data[0].hour
 
     const currentWeatherDate = context.getters.weatherData.last_updated_epoch
-
+    
     // Собираем данные погоды по часам относительно текущего времени
     const actualData = dayDataByHour.filter((el) => {
       return el.time_epoch >= currentWeatherDate
@@ -177,6 +178,7 @@ export default {
     // await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
     await axios.post("https://dev-vagapov.ru/weather-app/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
       .then((res) => {
+        // console.log(res.data)
         context.commit('setWeatherByHour', res.data)
       })
   },

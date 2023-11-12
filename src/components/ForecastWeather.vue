@@ -47,7 +47,7 @@ export default {
         },
     },
     mounted() {
-        console.log(this.forecastWeatherData);
+        // console.log(this.forecastWeatherData);
     },
 }
 </script>

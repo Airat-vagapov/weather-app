@@ -44,9 +44,6 @@ export default {
   },
   mounted() {
     this.timeUpdateInterval = setInterval(this.getTime, 1000)
-    console.log(this.deviceType)
-
-
   },
   beforeUnmount() {
     clearInterval(this.timeUpdateInterval);
