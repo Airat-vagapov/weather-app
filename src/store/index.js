@@ -20,6 +20,7 @@ const store = createStore({
             country: '',
             weatherData: {},
             forecastWeather:[],
+            forecastWeatherWithoutToday: [],
             currentIconName: {},
             weatherByHour: [],
             cityChoose: false,

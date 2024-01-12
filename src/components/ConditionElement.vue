@@ -2,7 +2,7 @@
     <div class="condition">
         <BaseTextWithIcon>
             <i v-if="showIcon" :class="currentIconName" class="wi condition__icon"></i>
-            <span class="condition__text">{{ weatherData.condition.text }}</span>
+            <span class="condition__text">{{ data }}</span>
         </BaseTextWithIcon>
         <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'" v-if="showLocationButton"></BaseIcon>
     </div>
@@ -20,6 +20,9 @@ export default {
             type: Boolean,
             required: false,
             default: true,
+        },
+        value: {
+            required: false,
         }
     },
     computed: {
@@ -30,6 +33,17 @@ export default {
             this.hasLocationButton ? showButton = true : showButton = false
             return showButton
         },
+
+        data() {
+            let value;
+
+            value = this.weatherData.condition.text
+
+            if(this.value) {
+                value = this.value
+            }
+            return value
+        }
     },
     methods: {
         ...mapActions(['getLocation', 'getWeather', 'getActualForecastByHour']),

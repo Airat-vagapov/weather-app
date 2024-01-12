@@ -21,9 +21,6 @@ export default {
     computed: {
         ...mapGetters(["weatherByHour"])
     },
-    mounted() {
-        console.log(this.weatherByHour)
-    }
 }
 </script>
 

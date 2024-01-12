@@ -11,6 +11,9 @@ export default {
     forecastWeatherData(state) {
         return state.forecastWeather
     },
+    forecastWeatherWithoutToday(state) {
+        return state.forecastWeatherWithoutToday
+    },
     currentIconName(state) {
         return state.currentIconName
     },

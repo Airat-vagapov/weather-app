@@ -3,7 +3,7 @@
         <BaseText :size="24" :marginBot="24">For next 2 days</BaseText>
         <!-- <div class="slider"> -->
         <Carousel>
-            <Slide v-for="(weather, index ) in this.forecastWeatherData" :key="index">
+            <Slide v-for="(weather, index ) in this.forecastWeatherWithoutToday" :key="index">
                 <BaseCard class="forecastCard--main" :type="'grid'" :column="3" :padding="'32'">
                     <div class="grid__elem">
                         <TimeElement :showTime="false" :showDate="true" :showDayAndMonth="true" :dateType="'custom'"
@@ -11,7 +11,8 @@
                         </TimeElement>
                         <BigTemperatireElement :showCondition="true" :showDetails="false" :temp="weather.day.avgtemp_c">
                         </BigTemperatireElement>
-                        <ConditionElement :hasLocationButton="false" :showIcon="false"></ConditionElement>
+                        <ConditionElement :hasLocationButton="false" :showIcon="false" :value="weather.day.condition.text">
+                        </ConditionElement>
                     </div>
                     <div class="grid__elem--2">
                         <div class="flex__row flex__row--centerVert h100">
@@ -40,14 +41,13 @@ export default {
 
 
     computed: {
-        ...mapGetters(['weatherData', 'forecastWeatherData']),
+        ...mapGetters(['weatherData', 'forecastWeatherData', 'forecastWeatherWithoutToday']),
 
         averageTemp() {
             return this.forecastWeatherData[1].day.avgtemp_c
         },
     },
     mounted() {
-        // console.log(this.forecastWeatherData);
     },
 }
 </script>

@@ -14,6 +14,9 @@ export default {
     setForecastWeatherData(state, payload) {
         state.forecastWeather = payload
     },
+    setforecastWeatherWithoutToday(state, payload) {
+        state.forecastWeatherWithoutToday = payload
+    },
     setCurrentIconName(state, payload) {
         state.currentIconName = payload
     },
@@ -47,7 +50,7 @@ export default {
     setCityIsLoading(state, payload) {
         state.cityIsLoading = payload
     },
-    setDeviceType (state, payload) {
+    setDeviceType(state, payload) {
         state.deviceType = payload
     }
 }
