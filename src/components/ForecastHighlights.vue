@@ -7,12 +7,12 @@
         </BaseCard>
         <BaseCard class="forecastHighlight">
             <span class="wi-thermometer wi forecastHighlight__icon"></span>
-            <span class="forecastHighlight__text">{{ data.day.maxtemp_c + " " + "C°" }}  </span>
+            <span class="forecastHighlight__text">{{ data.day.maxtemp_c + " " + "C°" }} </span>
             <span>Max temperature</span>
         </BaseCard>
         <BaseCard class="forecastHighlight">
             <span class="wi-thermometer wi forecastHighlight__icon"></span>
-            <span class="forecastHighlight__text">{{ data.day.avghumidity + ' ' + '%' }}  </span>
+            <span class="forecastHighlight__text">{{ data.day.avghumidity + ' ' + '%' }} </span>
             <span>Average humidity</span>
         </BaseCard>
     </ElementRow>
@@ -23,7 +23,15 @@ import ElementRow from '@/UI/ElementRow.vue'
 
 export default {
     components: { ElementRow },
-    props: ['data']
+    props: ['data'],
+    computed: {
+        // precipitations() {
+        //     console.log(data)
+        // }
+    },
+    mounted() {
+        console.log(this.data)
+    },
 }
 </script>
 

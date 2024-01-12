@@ -47,14 +47,13 @@ export default {
     const coordinates = context.getters.cityCoordinates
     await axios
       .get(
-        `https://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=5&alerts=yes&aqi=yes`
+        `https://api.weatherapi.com/v1/forecast.json?key=0654849dcf1945c5916194147232501&q=${coordinates}&days=3`
       )
       .then((response) => {
-        console.log(response.data)
         const currentWeather = response.data.current;
         const location = response.data.location;
         let forecastWeather = response.data.forecast.forecastday
-        forecastWeather.shift();
+        let forecastWeatherWithoutToday = forecastWeather.slice(1)
 
         const conditionCode = currentWeather.condition.code;
         const is_day = currentWeather.is_day;
@@ -64,12 +63,12 @@ export default {
 
         context.commit('setWeatherData', currentWeather)
         context.commit('setForecastWeatherData', forecastWeather)
-        // if (context.state.city === '' && context.state.country === '') {
+
+        context.commit('setforecastWeatherWithoutToday', forecastWeatherWithoutToday)
+
         context.commit('setCity', city)
         context.commit('setCountry', country)
-        // }
 
-        // return axios.post("/api/v1/getWeatherIcon.php",
         return axios.post("https://dev-vagapov.ru/weather-app/api/v1/getWeatherIcon.php",
           JSON.stringify({
             code: conditionCode,
@@ -149,7 +148,7 @@ export default {
     const dayDataByHour = data[0].hour
 
     const currentWeatherDate = context.getters.weatherData.last_updated_epoch
-    
+
     // Собираем данные погоды по часам относительно текущего времени
     const actualData = dayDataByHour.filter((el) => {
       return el.time_epoch >= currentWeatherDate
@@ -178,7 +177,6 @@ export default {
     // await axios.post("/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
     await axios.post("https://dev-vagapov.ru/weather-app/api/v1/addIconsByWeatherForecast.php", JSON.stringify(actualData))
       .then((res) => {
-        // console.log(res.data)
         context.commit('setWeatherByHour', res.data)
       })
   },
