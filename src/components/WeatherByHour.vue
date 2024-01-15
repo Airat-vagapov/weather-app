@@ -2,7 +2,7 @@
     <TheScroll>
         <BaseCard class="scrollByhour" :border="'bottom'" v-for="(weather, index) in weatherByHour"
             :key="index">
-
+            
             <span class="scrollByhour__timeText">{{ weather.time_hour }}</span>
             <div class="condition">
                 <i :class="weather.condition.iconName" class="wi condition__icon"></i>

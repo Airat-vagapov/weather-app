@@ -6,20 +6,24 @@
     @media (max-width:1199px)
         border-radius: 0 0 24px 24px
         padding: 24px
-        
-    &:before  
-       content: ''
-       position: absolute 
-       right: 0
-       top: 0
-       height: calc( 100% - 32px ) 
-       margin: auto 0
-       box-shadow: 10px 0px 20px 0px rgba(0,0,0,0.35)
-       width: 1px
+    &:before
+        content: ''
+        position: absolute
+        right: 0
+        top: 0
+        height: calc( 100% - 32px )
+        margin: auto 0
+        box-shadow: 10px 0px 20px 0px rgba(0,0,0,0.35)
+        width: 1px
     .scrollFade
         margin-bottom: 24px
-    .todayBlock 
+    .todayBlock
         margin-bottom: 0 !important
+
+.content.left_side 
+    @media (max-width: 767px) 
+        padding: 0 0 16px 16px
+    
 .temp
     display: flex
     align-items: center
@@ -29,6 +33,16 @@
         margin-right: 12px
         white-space: nowrap
         font-weight: 300
+    @media (max-width: 1199px)
+        justify-content: flex-start
+        gap: 32px
+    @media (max-width: 767px)
+        flex-direction: column
+        align-items: flex-start
+        gap: 16px
+        margin-bottom: 32px
+
+
 
 i
     margin-right: 8px
@@ -38,10 +52,17 @@ i
 .condition__text
     font-size: 32px
 
-// .icon__near
-//     margin-left: auto
-
 .temp__details
     display: flex
     flex-direction: column
     align-items: flex-start
+    @media (max-width: 1199px)
+        flex-direction: row
+        gap: 40px
+        p
+            font-size: 24px
+    @media (max-width: 767px)
+        gap: 32px
+        p
+            font-size: 18px
+            line-height: 120%

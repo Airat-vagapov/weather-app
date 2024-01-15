@@ -90,9 +90,6 @@ export default {
             return astroName
         }
     },
-    mounted() {
-        console.log(this.weatherData)
-    }
 }
 </script>
 <style scoped lang="sass">

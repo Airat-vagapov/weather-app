@@ -2,8 +2,8 @@
   <BaseBigCard class="left__side" :width="30" v-if="this.deviceType === 'desktop'">
     <CityElement></CityElement>
     <BaseCard :type="'col'" :padding="'none'" :marginBot="16">
-      <ConditionElement></ConditionElement>
-      <BigTemperatireElement :temp="currentTemp"></BigTemperatireElement>
+      <ConditionElement :hasLocationButton="false"></ConditionElement>
+      <BigTemperatireElement :showDetailCondition="showDetailCondition" :temp="currentTemp"></BigTemperatireElement>
       <TimeElement :showDayName="true"></TimeElement>
     </BaseCard>
 
@@ -54,6 +54,12 @@ export default {
 
     findNextHour() {
       return 's'
+    },
+
+    showDetailCondition() {
+      let value
+      this.deviceType === 'mobile' ? value = true : value = false
+      return value
     },
   },
 };

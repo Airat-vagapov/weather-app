@@ -1,14 +1,19 @@
 <template>
-    <div @click="choseCity">
-        <BaseIcon class="location__icon" :icon="'location_on'"></BaseIcon>
-        <span>{{ city + ', ' + country }}</span>
+    <div class="cityElement">
+        <div class="cityElement__choose" @click="choseCity">
+            <BaseIcon class="location__icon" :icon="'location_on'"></BaseIcon>
+            <span>{{ city + ', ' + country }}</span>
+        </div>
+
+        <LocationUpdate class="cityElement__update"></LocationUpdate>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
-
+import LocationUpdate from '@/components/LocationUpdate.vue';
 export default {
+    components: { LocationUpdate },
     computed: {
         ...mapGetters(["city", "country", "cityChoose"])
     },
@@ -23,14 +28,21 @@ export default {
 
 <style scoped lang="sass">
 @import '@/sass/vars.sass'
-div
+.cityElement
     display: flex
     align-items: center
-    margin-bottom: 24px
+    justify-content: space-between
+    margin-bottom: 20px
+.cityElement__choose
+    display: flex
+    align-items: center
     &:hover 
         cursor: pointer
         .location__icon span
         color: $blue-color
+
+.cityElement__update
+    height: 24px
 
 span
     font-size: 12px
@@ -40,7 +52,5 @@ span
     font-size: 12px
     margin-right: 8px
     transition: all 0.2s ease-in
-
     
-
 </style>

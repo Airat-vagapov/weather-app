@@ -4,7 +4,7 @@
             <i v-if="showIcon" :class="currentIconName" class="wi condition__icon"></i>
             <span class="condition__text">{{ data }}</span>
         </BaseTextWithIcon>
-        <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'" v-if="showLocationButton"></BaseIcon>
+        <!-- <BaseIcon class="icon__near" @click="updateLocation" :icon="'near_me'" v-if="showLocationButton"></BaseIcon> -->
     </div>
 </template>
 
@@ -27,33 +27,28 @@ export default {
     },
     computed: {
         ...mapGetters(['weatherData', 'forecastWeatherData', 'currentIconName', 'currentDayName', 'weatherTime', 'weatherByHour']),
-
         showLocationButton() {
-            let showButton
-            this.hasLocationButton ? showButton = true : showButton = false
-            return showButton
+            let showButton;
+            this.hasLocationButton ? showButton = true : showButton = false;
+            return showButton;
         },
-
         data() {
             let value;
-
-            value = this.weatherData.condition.text
-
-            if(this.value) {
-                value = this.value
+            value = this.weatherData.condition.text;
+            if (this.value) {
+                value = this.value;
             }
-            return value
+            return value;
         }
     },
     methods: {
         ...mapActions(['getLocation', 'getWeather', 'getActualForecastByHour']),
         ...mapMutations(['setDataLoaded']),
-
         updateLocation() {
-            this.setDataLoaded(false)
+            this.setDataLoaded(false);
             this.getLocation()
                 .then(() => this.getWeather())
-                .then(() => this.getActualForecastByHour())
+                .then(() => this.getActualForecastByHour());
         }
     },
 }
