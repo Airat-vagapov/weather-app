@@ -1,6 +1,6 @@
 <template>
     <SideModal :error="emptyCityList" :openLoader="cityIsLoading" :isOpen="cityChoose" @close-modal="closeModal"
-        data-moadal="cityChose">
+        data-modal="cityChose">
         <template v-slot:content>
 
             <h2 class="modal__title">Choose the City</h2>
@@ -12,7 +12,7 @@
                 </BaseInput>
                 <BaseIcon @click="handlerKeyup" class="city__modal__icon__search" :icon="'search'"></BaseIcon>
             </div>
-
+            
             <TheScroll v-if="!emptyCityList" class="cityList">
                 <div @click="submitCity(elem.city, elem.country, elem.coordinates)" class="city__modal__elem"
                     v-for="(elem, index) in cityList" :key="index">

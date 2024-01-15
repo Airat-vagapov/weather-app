@@ -14,6 +14,7 @@ export default {
       context.commit('setDeviceType', 'mobile')
     }
   },
+
   // Получение координат
   getLocation(context) {
     return new Promise((resolve, reject) => {
