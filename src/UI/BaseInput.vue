@@ -17,7 +17,7 @@ export default {
     },
     watch: {
         valid() {
-            console.log(this.valid)
+            // console.log(this.valid)
             if (!this.valid) { this.errorClass = 'input__error' } else { this.errorClass = '' }
         }
     }

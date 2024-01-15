@@ -71,7 +71,6 @@ export default {
                 });
         },
         searchCityName(value) {
-            console.log(value);
             this.cityName = value;
         },
         handlerKeyup() {

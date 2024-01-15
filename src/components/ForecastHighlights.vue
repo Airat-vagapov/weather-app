@@ -24,14 +24,6 @@ import ElementRow from '@/UI/ElementRow.vue'
 export default {
     components: { ElementRow },
     props: ['data'],
-    computed: {
-        // precipitations() {
-        //     console.log(data)
-        // }
-    },
-    mounted() {
-        console.log(this.data)
-    },
 }
 </script>
 

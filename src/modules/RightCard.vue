@@ -36,9 +36,7 @@ export default {
         //     return astroName
         // }
     },
-    mounted() {
-        // console.log(this.forecastWeatherData)
-    }
+
 }
 </script>
 
