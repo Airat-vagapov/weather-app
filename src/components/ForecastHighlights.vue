@@ -37,4 +37,6 @@ export default {
         font-size: 24px
     .forecastHighlight__text 
         font-size: 32px
+        @media (max-width:767px) 
+            font-size: 20px
 </style>

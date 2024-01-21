@@ -21,6 +21,7 @@ export default {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           const coordByLocation = position.coords.latitude + ',' + position.coords.longitude
+          // console.log(coordByLocation)
           resolve(context.commit('setcityCoordinates', coordByLocation))
         }, () => { resolve(context.dispatch('getLocationByIp')) })
       } else {
@@ -59,6 +60,7 @@ export default {
         const conditionCode = currentWeather.condition.code;
         const is_day = currentWeather.is_day;
 
+        console.log(location)
         const city = location.name
         const country = location.country
 
@@ -67,6 +69,7 @@ export default {
 
         context.commit('setforecastWeatherWithoutToday', forecastWeatherWithoutToday)
 
+        console.log(city)
         context.commit('setCity', city)
         context.commit('setCountry', country)
 

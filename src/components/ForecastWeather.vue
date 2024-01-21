@@ -6,6 +6,7 @@
             <Slide v-for="(weather, index ) in this.forecastWeatherWithoutToday" :key="index">
                 <BaseCard class="forecastCard--main" :type="'grid'" :column="3" :padding="'32'">
                     <div class="grid__elem">
+
                         <TimeElement :showTime="false" :showDate="true" :showDayAndMonth="true" :dateType="'custom'"
                             :dateData="weather.date">
                         </TimeElement>
@@ -59,4 +60,13 @@ export default {
     background-color: #fff
     border-radius: 12px
     width: 100%
+    @media (max-width: 767px) 
+        padding: 32px 20px
+        border-radius: 8px
+        .grid__elem 
+            margin-bottom: 16px
+        .condition .condition__text 
+            font-size: 20px
+        .temp 
+            margin-bottom: 0px
 </style>

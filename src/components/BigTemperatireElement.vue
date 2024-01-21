@@ -58,11 +58,17 @@ export default {
     display: flex
     align-items: flex-start
     @media (max-width:767px)
-        // align-items: center
+        align-items: flex-start
 
 .temp--big .condition__icon 
     font-size: 46px
     position: relative 
     top: 40px
     margin-right: 16px
+    @media (max-width: 375px) 
+        display: none
+
+.temp__gradus 
+    @media (max-width: 375px) 
+        font-size: 64px
 </style>
